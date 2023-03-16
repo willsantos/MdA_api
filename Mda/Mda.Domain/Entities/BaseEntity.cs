@@ -11,8 +11,13 @@ namespace Mda.Domain.Entities
         public BaseEntity()
         {
             Ativo = true;
+            Id = new Guid();
         }
         public bool Ativo { get; set; }
-        public Guid Id = new Guid();
+        public Guid Id { get; set; }
+        public DateTime DataCriacao { get; set; }
+        public DateTime DataDelecao { get; set; }
+        public DateTime DataAtualizacao { get; set; }
+
     }
 }
