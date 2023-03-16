@@ -10,7 +10,7 @@ namespace Mda.Domain.Interfaces
     {
         Task<IEnumerable<Response>> Get();
 
-        Task<Response> GetById(int id);
+        Task<Response> GetById(Guid id);
 
         Task<Response> Post(Request request);
 
