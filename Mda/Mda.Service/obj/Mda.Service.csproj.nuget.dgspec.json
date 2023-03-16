@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj": {}
+    "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Service\\Mda.Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj": {
+    "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Service\\Mda.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj",
-        "projectName": "Mda",
-        "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Service\\Mda.Service.csproj",
+        "projectName": "Mda.Service",
+        "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Service\\Mda.Service.csproj",
         "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\obj\\",
+        "outputPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,12 +44,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -62,9 +56,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
