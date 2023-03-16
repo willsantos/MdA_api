@@ -16,7 +16,7 @@ namespace Mda.Domain.Entities
         }
         public bool Ativo { get; set; }
         public Guid Id { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public DateTime DataCriacao { get; set; } // melhor aqui no construtor ou na service? 
         public DateTime DataDelecao { get; set; }
         public DateTime DataAtualizacao { get; set; }
 
