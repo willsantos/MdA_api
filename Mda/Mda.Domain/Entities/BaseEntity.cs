@@ -12,6 +12,7 @@ namespace Mda.Domain.Entities
         {
             Ativo = true;
             Id = new Guid();
+            DataCriacao = DateTime.Now;
         }
         public bool Ativo { get; set; }
         public Guid Id { get; set; }
