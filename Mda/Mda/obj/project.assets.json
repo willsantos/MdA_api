@@ -322,9 +322,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj",
-      "projectName": "Mda",
-      "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj",
+      "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.Api.csproj",
+      "projectName": "Mda.Api",
+      "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.Api.csproj",
       "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\obj\\",
       "projectStyle": "PackageReference",

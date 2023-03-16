@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a/l/Z/no9HBbijaO9SAzW3fyoHfjHo4ONUl3vtxy2GpGGApNgFFude7vG8G75WIE1fE3aYlxD0v5U7cxqij3oQ==",
+  "dgSpecHash": "yWGlRzA/hh5fa2uAalmFhq0AuIEimuWlz4iX7YQm4nkhuSvxoofqdc6a7W3rFAes/6UF2jQSJr9N0y9nzJlNjQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.csproj",
+  "projectFilePath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda\\Mda.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
