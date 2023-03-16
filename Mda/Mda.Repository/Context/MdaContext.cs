@@ -9,5 +9,16 @@ namespace Mda.Repository.Context
 {
     public class MdaContext : DbContext
     {
+        public MdaContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public MdaContext()
+        {
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+        }
     }
 }

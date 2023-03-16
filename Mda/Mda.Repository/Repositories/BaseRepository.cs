@@ -1,4 +1,6 @@
 ﻿using Mda.Domain.Interfaces;
+using Mda.Repository.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,79 +13,93 @@ namespace Mda.Repository.Repositories
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : class 
         // As classes abstratas são as que não permitem realizar qualquer tipo de instância.
     {
-        public Task<T> AddAsync(T item)
+        internal readonly MdaContext _context;
+
+        public BaseRepository(MdaContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<int> CountAsync()
+        public async Task<T> AddAsync(T item)
         {
-            throw new NotImplementedException();
+            await _context.Set<T>().AddAsync(item);
+            await _context.SaveChangesAsync();
+
+            return item;
         }
 
-        public Task<int> CountAsync(Expression<Func<T, bool>> expression)
+        public async Task<int> CountAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().CountAsync();
         }
 
-        public Task<int> CountAsync<K>(Expression<Func<T, IEnumerable<K>>> selectExpression)
+        public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Where(expression).CountAsync();
         }
 
-        public Task<int> CountAsync<K>(Expression<Func<T, bool>> expression, Expression<Func<T, IEnumerable<K>>> selectExpression)
+        public async Task<int> CountAsync<K>(Expression<Func<T, IEnumerable<K>>> selectExpression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Select(selectExpression).Distinct().CountAsync();
         }
 
-        public Task<T> EditAsync(T item)
+        public async Task<int> CountAsync<K>(Expression<Func<T, bool>> expression, Expression<Func<T, IEnumerable<K>>> selectExpression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Where(expression).Select(selectExpression).Distinct().CountAsync();
         }
 
-        public Task<T> FindAsNoTrackingAsync(Expression<Func<T, bool>> expression)
+        public async Task<T> EditAsync(T item)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(item);
+            await _context.SaveChangesAsync();
+
+            return item;
         }
 
-        public Task<T> FindAsync(int id)
+        public async Task<T> FindAsNoTrackingAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
-        public Task<T> FindAsync(decimal id)
+        public async Task<T> FindAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public Task<T> FindAsync(Expression<Func<T, bool>> expression)
+        public async Task<T> FindAsync(decimal id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public Task<IEnumerable<T>> ListAsync()
+        public async Task<T> FindAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FirstOrDefaultAsync(expression);
         }
 
-        public Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> ListAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().ToListAsync();
         }
 
-        public Task<List<T>> ListPaginationAsync<K>(Expression<Func<T, K>> sortExpression, int pagina, int quantidade)
+        public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Where(expression).ToListAsync();
         }
 
-        public Task<List<T>> ListPaginationAsync<K>(Expression<Func<T, bool>> expression, Expression<Func<T, K>> sortExpression, int pagina, int quantidade)
+        public async Task<List<T>> ListPaginationAsync<K>(Expression<Func<T, K>> sortExpression, int pagina, int quantidade)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().OrderBy(sortExpression).Skip(quantidade * (pagina - 1)).Take(quantidade).ToListAsync();
         }
 
-        public Task RemoveAsync(T item)
+        public async Task<List<T>> ListPaginationAsync<K>(Expression<Func<T, bool>> expression, Expression<Func<T, K>> sortExpression, int pagina, int quantidade)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Where(expression).OrderBy(sortExpression).Skip(quantidade * (pagina - 1)).Take(quantidade).ToListAsync();
+        }
+
+        public async Task RemoveAsync(T item)
+        {
+            _context.Set<T>().Remove(item);
+            await _context.SaveChangesAsync();
         }
     }
 }
