@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mda.Domain\Mda.Domain.csproj" />
+    <ProjectReference Include="..\Mda.Repository\Mda.Repository.csproj" />
+    <ProjectReference Include="..\Mda.Service\Mda.Service.csproj" />
+  </ItemGroup>
+
 </Project>

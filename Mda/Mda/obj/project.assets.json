@@ -88,6 +88,71 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Mda.CrossCutting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0",
+          "Mda.Repository": "1.0.0",
+          "Mda.Service": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.CrossCutting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.CrossCutting.dll": {}
+        }
+      },
+      "Mda.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Mda.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Domain.dll": {}
+        }
+      },
+      "Mda.IoC/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.CrossCutting": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.IoC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.IoC.dll": {}
+        }
+      },
+      "Mda.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Repository.dll": {}
+        }
+      },
+      "Mda.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0",
+          "Mda.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Service.dll": {}
+        }
       }
     }
   },
@@ -216,10 +281,37 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Mda.CrossCutting/1.0.0": {
+      "type": "project",
+      "path": "../Mda.CrossCutting/Mda.CrossCutting.csproj",
+      "msbuildProject": "../Mda.CrossCutting/Mda.CrossCutting.csproj"
+    },
+    "Mda.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Domain/Mda.Domain.csproj",
+      "msbuildProject": "../Mda.Domain/Mda.Domain.csproj"
+    },
+    "Mda.IoC/1.0.0": {
+      "type": "project",
+      "path": "../Mda.IoC/Mda.IoC.csproj",
+      "msbuildProject": "../Mda.IoC/Mda.IoC.csproj"
+    },
+    "Mda.Repository/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Repository/Mda.Repository.csproj",
+      "msbuildProject": "../Mda.Repository/Mda.Repository.csproj"
+    },
+    "Mda.Service/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Service/Mda.Service.csproj",
+      "msbuildProject": "../Mda.Service/Mda.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Mda.Domain >= 1.0.0",
+      "Mda.IoC >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -255,7 +347,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Domain\\Mda.Domain.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Domain\\Mda.Domain.csproj"
+            },
+            "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.IoC\\Mda.IoC.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.IoC\\Mda.IoC.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

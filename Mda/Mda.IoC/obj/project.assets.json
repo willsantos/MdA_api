@@ -1,11 +1,87 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Mda.CrossCutting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0",
+          "Mda.Repository": "1.0.0",
+          "Mda.Service": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.CrossCutting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.CrossCutting.dll": {}
+        }
+      },
+      "Mda.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Mda.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Domain.dll": {}
+        }
+      },
+      "Mda.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Repository.dll": {}
+        }
+      },
+      "Mda.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0",
+          "Mda.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Service.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Mda.CrossCutting/1.0.0": {
+      "type": "project",
+      "path": "../Mda.CrossCutting/Mda.CrossCutting.csproj",
+      "msbuildProject": "../Mda.CrossCutting/Mda.CrossCutting.csproj"
+    },
+    "Mda.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Domain/Mda.Domain.csproj",
+      "msbuildProject": "../Mda.Domain/Mda.Domain.csproj"
+    },
+    "Mda.Repository/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Repository/Mda.Repository.csproj",
+      "msbuildProject": "../Mda.Repository/Mda.Repository.csproj"
+    },
+    "Mda.Service/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Service/Mda.Service.csproj",
+      "msbuildProject": "../Mda.Service/Mda.Service.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Mda.CrossCutting >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\gabri\\.nuget\\packages\\": {},
@@ -39,7 +115,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.CrossCutting\\Mda.CrossCutting.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.CrossCutting\\Mda.CrossCutting.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

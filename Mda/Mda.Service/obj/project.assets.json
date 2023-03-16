@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Mda.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Mda.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Domain.dll": {}
+        }
+      },
+      "Mda.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Mda.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Mda.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Mda.Repository.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Mda.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Domain/Mda.Domain.csproj",
+      "msbuildProject": "../Mda.Domain/Mda.Domain.csproj"
+    },
+    "Mda.Repository/1.0.0": {
+      "type": "project",
+      "path": "../Mda.Repository/Mda.Repository.csproj",
+      "msbuildProject": "../Mda.Repository/Mda.Repository.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Mda.Domain >= 1.0.0",
+      "Mda.Repository >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\gabri\\.nuget\\packages\\": {},
@@ -39,7 +77,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Domain\\Mda.Domain.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Domain\\Mda.Domain.csproj"
+            },
+            "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Repository\\Mda.Repository.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\Projeto Will\\MdA_api\\Mda\\Mda.Repository\\Mda.Repository.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
