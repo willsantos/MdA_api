@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Mda.Domain.Entities.Utils;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace Mda.Service
 {
     public class BaseService
     {
-        public readonly Guid? UsuarioId;
+        public readonly string? UsuarioId; // precisamos converter o Guid para string para acontecer a verificação?
         private IHttpContextAccessor httpContextAccessor;
         public BaseService(IHttpContextAccessor httpContextAccessor)
         {
-            //UsuarioId = httpContextAccessor.HttpContext.GetClaim(ClaimTypes.NameIdentifier).ToInt();            
+            UsuarioId = httpContextAccessor.HttpContext.GetClaim(ClaimTypes.NameIdentifier);            
         }
     }
 }
