@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "DvBAWy9kHYqppjqAwu0aSUZrjAGVp1aPL+lnkl4avQw=",
-  "Source": "Mda",
-  "BasePath": "_content/Mda",
+  "Hash": "QIsquFJAKGiT0/Zt1YWvZ0G5E96Fgo0BufDDpf3/Gb0=",
+  "Source": "Mda.Api",
+  "BasePath": "_content/Mda.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

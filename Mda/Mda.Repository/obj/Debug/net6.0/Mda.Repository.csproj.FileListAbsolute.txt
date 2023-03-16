@@ -1,0 +1,15 @@
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\bin\Debug\net6.0\Mda.Repository.deps.json
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\bin\Debug\net6.0\Mda.Repository.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\bin\Debug\net6.0\Mda.Repository.pdb
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\bin\Debug\net6.0\Mda.Domain.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\bin\Debug\net6.0\Mda.Domain.pdb
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.csproj.AssemblyReference.cache
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.AssemblyInfoInputs.cache
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.AssemblyInfo.cs
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.csproj.CopyComplete
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\refint\Mda.Repository.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\Mda.Repository.pdb
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Repository\obj\Debug\net6.0\ref\Mda.Repository.dll

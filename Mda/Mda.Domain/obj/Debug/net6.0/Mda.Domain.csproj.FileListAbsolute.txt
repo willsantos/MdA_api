@@ -1,0 +1,12 @@
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\bin\Debug\net6.0\Mda.Domain.deps.json
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\bin\Debug\net6.0\Mda.Domain.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\bin\Debug\net6.0\Mda.Domain.pdb
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.csproj.AssemblyReference.cache
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.AssemblyInfoInputs.cache
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.AssemblyInfo.cs
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\refint\Mda.Domain.dll
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\Mda.Domain.pdb
+C:\Users\gabri\Desktop\Projeto Will\MdA_api\Mda\Mda.Domain\obj\Debug\net6.0\ref\Mda.Domain.dll
