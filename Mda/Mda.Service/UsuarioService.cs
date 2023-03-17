@@ -35,10 +35,10 @@ namespace Mda.Service
             {
                 throw new Exception("Usuário não existe ou está inativo");
             }
-           /* if (UsuarioId == id)
+           if (UsuarioId == id)
             {
                 return _mapper.Map<UsuarioResponse>(userBase);
-            }*/
+            }
 
             throw new Exception("Acesso Negado");
         }

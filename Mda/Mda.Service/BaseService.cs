@@ -11,7 +11,7 @@ namespace Mda.Service
 {
     public class BaseService
     {
-        public readonly string? UsuarioId; // precisamos converter o Guid para string para acontecer a verificação?
+        public readonly Guid? UsuarioId; // precisamos converter o Guid para string para acontecer a verificação?
         private IHttpContextAccessor httpContextAccessor;
         public BaseService(IHttpContextAccessor httpContextAccessor)
         {            
