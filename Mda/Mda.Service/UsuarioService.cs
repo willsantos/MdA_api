@@ -40,9 +40,14 @@ namespace Mda.Service
             throw new Exception("Você não pode deletar outro usuário");
         }
 
-        public Task<IEnumerable<UsuarioResponse>> Get()
+        public async Task<IEnumerable<UsuarioResponse>> Get()
         {
-            throw new NotImplementedException();
+            var lista = await _usuarioRepository.ListAsync(x => x.Ativo);
+            if (Role != ConstanteUtil.PerfilUsuarioAdmin)
+            {
+                throw new Exception("Você não tem acesso ou não está logado");
+            }
+            return _mapper.Map<IEnumerable<UsuarioResponse>>(lista);
         }
 
         public async Task<UsuarioResponse> GetById(Guid id)
