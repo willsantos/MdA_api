@@ -1,0 +1,14 @@
+﻿using Mda.Domain.Entities.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Mda.Domain.UsuarioContratos
+{
+    public class UsuarioRequestRole
+    {
+        public EnumAcesso Role { get; set; }
+    }
+}

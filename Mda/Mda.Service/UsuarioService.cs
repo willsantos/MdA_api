@@ -18,6 +18,7 @@ namespace Mda.Service
             _usuarioRepository = usuarioRepository;
         }
 
+        // criar um patch para mudança de role 
         public async Task Delete(Guid Id)
         {
             var usuario = await _usuarioRepository.FindAsync(x => x.Id == Id);
@@ -81,7 +82,7 @@ namespace Mda.Service
                 usuario.Nome = request.Nome;
                 usuario.Email = request.Email;
                 usuario.DataAtualizacao = DateTime.Now;
-                await _usuarioRepository.EditAsync(usuario);
+                await _usuarioRepository.EditAsync(usuario); 
                 
             }
 

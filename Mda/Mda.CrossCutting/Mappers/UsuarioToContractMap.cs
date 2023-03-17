@@ -10,6 +10,7 @@ namespace Mda.CrossCutting.Mappers
         {
             CreateMap<Usuario, UsuarioRequest>().ReverseMap();
             CreateMap<Usuario, UsuarioResponse>().ReverseMap();
+            CreateMap<Usuario, UsuarioRequestRole>().ReverseMap();
         }
        
     }
