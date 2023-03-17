@@ -16,7 +16,7 @@ namespace Mda.Domain.Interfaces
 
         Task<Response> Put(Request request, int? id);
 
-        Task Delete(int request);
+        Task Delete(Guid Id);
 
     }
 }
