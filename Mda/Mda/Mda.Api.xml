@@ -21,6 +21,15 @@
             <response code="404">Se o objeto não existe</response>
             <response code="403">Se o acesso for negado</response>
         </member>
+        <member name="M:Mda.Api.Controllers.UsuarioController.Get">
+            <summary>
+            Realiza busca de todos os usuários.
+            </summary>
+            <returns>Usuário</returns>
+            <response code="200">Retorna usuários</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
         <member name="M:Mda.Api.Controllers.UsuarioController.Put(Mda.Domain.UsuarioContratos.UsuarioRequest,System.Guid)">
              <summary>
              Busca usuário e realiza mudança de dados.
