@@ -19,7 +19,26 @@ namespace Mda.Service
             _usuarioRepository = usuarioRepository;
         }
 
-        // criar um patch para mudança de role 
+        public async Task<UsuarioResponse> Patch(Guid Id, UsuarioRequestRole UsuarioRole)
+        {
+            var usuario = await _usuarioRepository.FindAsync(x => x.Id == Id);
+            if (usuario == null || usuario.Ativo == false)
+            {
+                throw new Exception("Usuario não encontrado");
+            }
+            if (UsuarioRole.Role.ToString() != ConstantUtil.PerfilUsuarioAdmin)
+            {
+                throw new Exception("Você não pode mudar a Role desse usuário");
+            }
+            var refUsuarioAntigo = usuario;
+
+            usuario.Role = UsuarioRole.Role;           
+            usuario.DataAtualizacao = DateTime.Now;
+
+            await _usuarioRepository.EditAsync(usuario);           
+
+            return _mapper.Map<UsuarioResponse>(usuario);
+        }
         public async Task Delete(Guid Id)
         {
             var usuario = await _usuarioRepository.FindAsync(x => x.Id == Id);
