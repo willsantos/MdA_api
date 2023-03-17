@@ -14,8 +14,9 @@ namespace Mda.Service
         public readonly string? UsuarioId; // precisamos converter o Guid para string para acontecer a verificação?
         private IHttpContextAccessor httpContextAccessor;
         public BaseService(IHttpContextAccessor httpContextAccessor)
-        {
-            UsuarioId = httpContextAccessor.HttpContext.GetClaim(ClaimTypes.NameIdentifier);            
+        {            
+            var IdGuid = httpContextAccessor.HttpContext.GetClaim(ClaimTypes.NameIdentifier);
+            var UsuarioId = new Guid(IdGuid);
         }
     }
 }
