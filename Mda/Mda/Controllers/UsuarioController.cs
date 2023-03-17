@@ -91,5 +91,21 @@ namespace Mda.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Deleta usuário.
+        /// </summary>            
+        /// <response code="200">Se o objeto existe</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        public async Task<ActionResult> Delete([FromRoute] Guid id)
+        {
+
+            await _usuarioService.Delete(id);
+            return NoContent();
+        }
+
     }
 }
