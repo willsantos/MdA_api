@@ -43,7 +43,7 @@ namespace Mda.Service
         public async Task<IEnumerable<UsuarioResponse>> Get()
         {
             var lista = await _usuarioRepository.ListAsync(x => x.Ativo);
-            if (Role != ConstanteUtil.PerfilUsuarioAdmin)
+            if (UsuarioRole != ConstanteUtil.PerfilUsuarioAdmin)
             {
                 throw new Exception("Você não tem acesso ou não está logado");
             }

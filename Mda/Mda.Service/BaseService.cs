@@ -13,10 +13,12 @@ namespace Mda.Service
     {
         public readonly Guid? UsuarioId; // precisamos converter o Guid para string para acontecer a verificação?
         private IHttpContextAccessor httpContextAccessor;
+        public readonly string UsuarioRole;
         public BaseService(IHttpContextAccessor httpContextAccessor)
         {            
             var IdGuid = httpContextAccessor.HttpContext.GetClaim(ClaimTypes.NameIdentifier);
             var UsuarioId = new Guid(IdGuid);
+            UsuarioRole = httpContextAccessor.HttpContext.GetClaim(ClaimTypes.Role);
         }
     }
 }
