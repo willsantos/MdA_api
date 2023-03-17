@@ -1,4 +1,5 @@
 ﻿using Mda.Domain.Entities;
+using Mda.Domain.Entities.Utils;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,12 @@ namespace Mda.Repository.Mappings
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            /*builder
+            builder
                 .Property(prop => prop.Role)
                 .HasConversion(
                     prop => prop.ToString(),
-            prop => (EnumRole)Enum.Parse(typeof(EnumRole), prop)
-            );*/ //vamos trabalhar com níveis de acesso?
+            prop => (EnumAcesso)Enum.Parse(typeof(EnumAcesso), prop)
+            ); 
 
             builder.HasIndex(prop => prop.Email).IsUnique();
         }
