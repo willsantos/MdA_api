@@ -9,5 +9,6 @@ namespace Mda.Domain.Interfaces
 {
     public interface IUsuarioService : IBaseService<UsuarioRequest, UsuarioResponse> 
     {
+        Task<UsuarioResponse> Patch(Guid Id, UsuarioRequestRole Usuario);
     }
 }

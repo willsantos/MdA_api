@@ -57,5 +57,39 @@ namespace Mda.Api.Controllers
             var result = await _usuarioService.Get();
             return Ok(result);
         }
+        /// <summary>
+        /// Busca usuário e realiza mudança de dados.
+        /// </summary>   
+        ///<returns>Usuário modificado</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca usuário para mudança de dados.", Description = "Retorna o usuario modificado.")]
+        public async Task<ActionResult<UsuarioResponse>> Put([FromBody] UsuarioRequest usuarioAlteracao, [FromRoute] Guid id)
+        {
+            var result = await _usuarioService.Put(usuarioAlteracao, id);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Busca usuário e realiza mudança de role
+        /// </summary>   
+        ///<returns>Usuário modificado</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [HttpPatch("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca usuário para mudança da Role.", Description = "Acesso só ao administrador.Retorna o usuario modificado.")]
+        public async Task<ActionResult<UsuarioResponse>> Patch([FromRoute] Guid id, [FromBody] UsuarioRequestRole userRole)
+        {
+            var result = await _usuarioService.Patch(id, userRole);
+            return Ok(result);
+        }
+
     }
 }
