@@ -14,7 +14,7 @@ namespace Mda.Domain.Interfaces
 
         Task<Response> Post(Request request);
 
-        Task<Response> Put(Request request, int? id);
+        Task<Response> Put(Request request, Guid? id);
 
         Task Delete(Guid Id);
 
