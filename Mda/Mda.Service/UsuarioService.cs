@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Mda.Domain.Entities;
+using Mda.Domain.Entities.Utils;
 using Mda.Domain.Interfaces;
 using Mda.Domain.Shared;
 using Mda.Domain.UsuarioContratos;
@@ -43,7 +44,7 @@ namespace Mda.Service
         public async Task<IEnumerable<UsuarioResponse>> Get()
         {
             var lista = await _usuarioRepository.ListAsync(x => x.Ativo);
-            if (UsuarioRole != ConstanteUtil.PerfilUsuarioAdmin)
+            if (UsuarioRole != ConstantUtil.PerfilUsuarioAdmin)
             {
                 throw new Exception("Você não tem acesso ou não está logado");
             }
