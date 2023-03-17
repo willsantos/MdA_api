@@ -31,14 +31,14 @@ namespace Mda.Service
             {
                 throw new Exception("Usuario já foi deletado Logicamente");
             }
-            if (UsuarioId == Id)
+            if (UsuarioRole == ConstantUtil.PerfilUsuarioAdmin)
             {
                 usuario.DataAtualizacao = DateTime.Now;
                 usuario.Ativo = false;
                 await _usuarioRepository.EditAsync(usuario);
             }
 
-            throw new Exception("Você não pode deletar outro usuário");
+            throw new Exception("Só Administrador pode realizar deleção");
         }
 
         public async Task<IEnumerable<UsuarioResponse>> Get()
