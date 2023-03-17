@@ -48,6 +48,14 @@ namespace Mda.Api.Controllers
             var result = await _usuarioService.GetById(id);
             return Ok(result);
         }
+
+        /// <summary>
+        /// Realiza busca de todos os usuários.
+        /// </summary>
+        /// <returns>Usuário</returns>
+        /// <response code="200">Retorna usuários</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [HttpGet]
         [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
         [SwaggerOperation(Summary = "Busca Todos os Usuarios ativos.", Description = "Retorna todos os usuarios Ativos.")]
