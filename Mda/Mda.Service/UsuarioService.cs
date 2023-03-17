@@ -81,18 +81,19 @@ namespace Mda.Service
             {
                 throw new Exception("Usuário não encontrado ou inativo");
             }
-            if (UsuarioId == id)
+            if (UsuarioId == id || UsuarioRole == ConstantUtil.PerfilUsuarioAdmin)
             {
                 var refUsuarioAntigo = usuario;
                 
                 usuario.Nome = request.Nome;
                 usuario.Email = request.Email;
                 usuario.DataAtualizacao = DateTime.Now;
-                await _usuarioRepository.EditAsync(usuario); 
-                
-            }
+                await _usuarioRepository.EditAsync(usuario);
+                return _mapper.Map<UsuarioResponse>(usuario);
 
-            return _mapper.Map<UsuarioResponse>(usuario);
+            }
+            throw new Exception("Acesso negado");
+           
         }
     }
 
