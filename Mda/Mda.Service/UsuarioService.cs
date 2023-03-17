@@ -18,9 +18,25 @@ namespace Mda.Service
             _usuarioRepository = usuarioRepository;
         }
 
-        public Task Delete(int request)
+        public async Task Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var usuario = await _usuarioRepository.FindAsync(x => x.Id == Id);
+            if (usuario == null)
+            {
+                throw new Exception("Usuário não encontrado");
+            }
+            if (usuario.Ativo == false)
+            {
+                throw new Exception("Usuario já foi deletado Logicamente");
+            }
+            if (UsuarioId == Id)
+            {
+                usuario.DataAtualizacao = DateTime.Now;
+                usuario.Ativo = false;
+                await _usuarioRepository.EditAsync(usuario);
+            }
+
+            throw new Exception("Você não tem acesso a delecao desse usuario");
         }
 
         public Task<IEnumerable<UsuarioResponse>> Get()
