@@ -36,7 +36,7 @@ namespace Mda.Service
                 await _usuarioRepository.EditAsync(usuario);
             }
 
-            throw new Exception("Você não tem acesso a delecao desse usuario");
+            throw new Exception("Você não pode deletar outro usuário");
         }
 
         public Task<IEnumerable<UsuarioResponse>> Get()
@@ -67,9 +67,25 @@ namespace Mda.Service
             return _mapper.Map<UsuarioResponse>(usuarioCadastrado);
         }
 
-        public Task<UsuarioResponse> Put(UsuarioRequest request, int? id)
+        public async Task<UsuarioResponse> Put(UsuarioRequest request, Guid? id)
         {
-            throw new NotImplementedException();
+            var usuario = await _usuarioRepository.FindAsync(x => x.Id == id && x.Ativo);
+            if (usuario == null)
+            {
+                throw new Exception("Usuário não encontrado ou inativo");
+            }
+            if (UsuarioId == id)
+            {
+                var refUsuarioAntigo = usuario;
+                
+                usuario.Nome = request.Nome;
+                usuario.Email = request.Email;
+                usuario.DataAtualizacao = DateTime.Now;
+                await _usuarioRepository.EditAsync(usuario);
+                
+            }
+
+            return _mapper.Map<UsuarioResponse>(usuario);
         }
     }
 
