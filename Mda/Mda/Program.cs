@@ -1,3 +1,4 @@
+using Mda.IoC;
 using Mda.Repository.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -24,8 +25,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
- //NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services); 
-// NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
+ NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services); 
+ NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services);
 builder.Services.AddSwaggerGen(
     c =>
     {
