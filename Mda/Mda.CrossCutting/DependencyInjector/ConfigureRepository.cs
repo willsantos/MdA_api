@@ -11,8 +11,9 @@ namespace Mda.CrossCutting.DependencyInjector
 {
     public class ConfigureRepository
     {
-       
-        public static void ConfigureDependenciesRepository(IServiceCollection serviceCollection, string connectionString)
+              
+
+        public static void ConfigureDependenciesRepository(IServiceCollection serviceCollection)
         {
 
             serviceCollection.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -22,7 +23,8 @@ namespace Mda.CrossCutting.DependencyInjector
              serviceCollection.AddScoped<ITarefaRepository, TarefaRepository>();
              serviceCollection.AddScoped<ITogglRepository, TogglRepository>();
              serviceCollection.AddScoped<ILogRepository, LogRepository>();*/
-            //serviceCollection.AddDbContext<MdaContext>(options => options.UseSqlServer(connectionString));
+            /*serviceCollection.AddDbContext<MdaContext>(options => options.UseMySql(_configuration.GetConnectionString(connectionString),
+                                                                                   ServerVersion.AutoDetect(connectionString)));*/
 
 
         }
