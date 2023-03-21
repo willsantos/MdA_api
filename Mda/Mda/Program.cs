@@ -8,6 +8,9 @@ using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.Services.AddHttpContextAccessor();
 
 
 // Add services to the container.
@@ -16,9 +19,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
-var conexao = builder.Configuration.GetValue<string>("Mda_connString");
-var connectionString = builder.Configuration.GetConnectionString("conexao");
-//NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services); 
+
+ //NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services); 
 //NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
 builder.Services.AddSwaggerGen(
     c =>
@@ -50,6 +52,7 @@ builder.Services.AddSwaggerGen(
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile); //mostra o diretório que se encontra o swagger, que é o diretório da aplicação
         c.IncludeXmlComments(xmlPath); // inclui nossos comentários no swagger
     });
+var connectionString = builder.Configuration.GetValue<string>("Mda_connString");
 
 var jwt = builder.Configuration.GetValue<string>("Mda_JWT_SECRET_KEY");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
