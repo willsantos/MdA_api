@@ -1,4 +1,5 @@
 ﻿using Mda.Domain.Interfaces;
+using Mda.Repository.Context;
 using Mda.Service;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,7 @@ namespace Mda.CrossCutting.DependencyInjector
             serviceCollection.AddScoped<IRelatorioService, RelatorioService>();
             serviceCollection.AddScoped<ITogglService, TogglService>();
             serviceCollection.AddScoped<ILogService, LogService>();*/
+            
         }
     }
 }

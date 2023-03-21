@@ -1,7 +1,11 @@
+using Mda.Repository.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MySqlConnector;
+using System;
 using System.Reflection;
 using System.Text;
 
@@ -53,6 +57,8 @@ builder.Services.AddSwaggerGen(
         c.IncludeXmlComments(xmlPath); // inclui nossos comentários no swagger
     });
 var connectionString = builder.Configuration.GetValue<string>("Mda_connString");
+builder.Services.AddDbContextPool<MdaContext>(opt => opt./*UseLazyLoadingProxies().*/UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 
 var jwt = builder.Configuration.GetValue<string>("Mda_JWT_SECRET_KEY");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
@@ -68,20 +74,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 var app = builder.Build();
 
 
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
 
 
