@@ -16,8 +16,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
-var connectiontString = builder.Configuration.GetValue<string>("Mda_connString");
-var connectionString = builder.Configuration.GetConnectionString("connectiontString");
+var conexao = builder.Configuration.GetValue<string>("Mda_connString");
+var connectionString = builder.Configuration.GetConnectionString("conexao");
+//NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services); 
+//NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
 builder.Services.AddSwaggerGen(
     c =>
     {
