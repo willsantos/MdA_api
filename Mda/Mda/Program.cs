@@ -1,4 +1,3 @@
-using Mda.IoC;
 using Mda.Repository.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +8,7 @@ using MySqlConnector;
 using System;
 using System.Reflection;
 using System.Text;
+using Mda.IoC;
 
 
 
@@ -54,8 +54,8 @@ builder.Services.AddSwaggerGen(
         }
     });
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"; //pede para que o swagger leia de um arquivo xml
-        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile); //mostra o diretório que se encontra o swagger, que é o diretório da aplicação
-        c.IncludeXmlComments(xmlPath); // inclui nossos comentários no swagger
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile); //mostra o diretï¿½rio que se encontra o swagger, que ï¿½ o diretï¿½rio da aplicaï¿½ï¿½o
+        c.IncludeXmlComments(xmlPath); // inclui nossos comentï¿½rios no swagger
     });
 var connectionString = builder.Configuration.GetValue<string>("Mda_connString");
 builder.Services.AddDbContextPool<MdaContext>(opt => opt./*UseLazyLoadingProxies().*/UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
