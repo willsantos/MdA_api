@@ -58,7 +58,7 @@ builder.Services.AddSwaggerGen(
         c.IncludeXmlComments(xmlPath); // inclui nossos coment�rios no swagger
     });
 var connectionString = builder.Configuration.GetValue<string>("Mda_connString");
-builder.Services.AddDbContextPool<MdaContext>(opt => opt./*UseLazyLoadingProxies().*/UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContextPool<MdaContext>(opt => opt.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
 var jwt = builder.Configuration.GetValue<string>("Mda_JWT_SECRET_KEY");
