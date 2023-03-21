@@ -16,6 +16,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
+var connectiontString = builder.Configuration.GetValue<string>("Mda_connString");
+var connectionString = builder.Configuration.GetConnectionString("connectiontString");
 builder.Services.AddSwaggerGen(
     c =>
     {
