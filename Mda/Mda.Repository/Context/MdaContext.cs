@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Mda.Domain.Entities;
+using Mda.Repository.Mappings;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +12,7 @@ namespace Mda.Repository.Context
 {
     public class MdaContext : DbContext
     {
+        
         public MdaContext(DbContextOptions options) : base(options)
         {
         }
@@ -16,9 +20,10 @@ namespace Mda.Repository.Context
         public MdaContext()
         {
         }
+        public DbSet<Usuario> Usuarios { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Usuario>(new UsuarioEntityMap().Configure);
         }
     }
 }

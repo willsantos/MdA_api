@@ -21,7 +21,7 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
  //NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services); 
-//NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
+// NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
 builder.Services.AddSwaggerGen(
     c =>
     {
