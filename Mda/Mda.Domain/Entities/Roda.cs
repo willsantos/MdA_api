@@ -9,6 +9,7 @@ namespace Mda.Domain.Entities
 {
     public class Roda : BaseEntity
     {
-        public TipoArea Tipo { get; set; } 
+        public TipoArea Tipo { get; set; }
+        public virtual ICollection<Area> Areas { get; set; }
     }
 }

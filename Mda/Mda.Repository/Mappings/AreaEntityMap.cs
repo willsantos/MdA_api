@@ -1,5 +1,5 @@
 ﻿using Mda.Domain.Entities;
-using Mda.Domain.Entities.Utils;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace Mda.Repository.Mappings
 {
-    public class RodaEntityMap
+    public class AreaEntityMap
     {
-        public void Configure(EntityTypeBuilder<Roda> builder)
+        public void Configure(EntityTypeBuilder<Area> builder)
         {
             builder
-                .Property(prop => prop.Tipo)
-                .HasConversion(
-                    prop => prop.ToString(),
-            prop => (TipoArea)Enum.Parse(typeof(TipoArea), prop)
-            );
+                .HasOne(p => p.Roda)
+                .WithMany(p => p.Areas)
+                .HasForeignKey(p => p.RodaId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
