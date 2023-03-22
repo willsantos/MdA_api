@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mda.Domain.Entities.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Mda.Domain.Entities
 {
     public class Area : BaseEntity
     {
-        public int Tipo { get; set; } // defino smallInt nas configs do Sql, certo?
+        public AreaDaVida Tipo { get; set; } 
     }
 }

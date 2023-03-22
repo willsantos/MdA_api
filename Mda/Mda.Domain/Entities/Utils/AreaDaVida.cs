@@ -19,6 +19,6 @@ namespace Mda.Domain.Entities.Utils
         VidaSocial,
         Espiritualidade,
         Estudos,
-        EquilibrioEmocional,
+        EquilibrioEmocional
     }
 }
