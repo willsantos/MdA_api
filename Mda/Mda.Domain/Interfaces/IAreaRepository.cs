@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mda.Domain.Interfaces
 {
-    public interface IRodaRepository : IBaseRepository<Roda>
+    public interface IAreaRepository : IBaseRepository<Area>
     {
     }
 }

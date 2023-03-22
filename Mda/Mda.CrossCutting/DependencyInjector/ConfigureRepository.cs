@@ -18,8 +18,8 @@ namespace Mda.CrossCutting.DependencyInjector
 
             serviceCollection.AddScoped<IUsuarioRepository, UsuarioRepository>();
             serviceCollection.AddScoped<IRodaRepository, RodaRepository>();
-            /*  serviceCollection.AddScoped<ICodigoConfirmacaoRepository, CodigoConfirmacaoRepository>();
-             serviceCollection.AddScoped<IProjetoUsuarioRepository, ProjetoUsuarioRepository>();
+            serviceCollection.AddScoped<IAreaRepository, AreaRepository>();
+            /* serviceCollection.AddScoped<IProjetoUsuarioRepository, ProjetoUsuarioRepository>();
              serviceCollection.AddScoped<ITarefaRepository, TarefaRepository>();
              serviceCollection.AddScoped<ITogglRepository, TogglRepository>();
              serviceCollection.AddScoped<ILogRepository, LogRepository>();*/

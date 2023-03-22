@@ -27,6 +27,8 @@ namespace Mda.Repository.Context
         {
             modelBuilder.Entity<Usuario>(new UsuarioEntityMap().Configure);
             modelBuilder.Entity<Roda>(new RodaEntityMap().Configure);
+            modelBuilder.Entity<Area>(new AreaEntityMap().Configure);
+
         }
     }
 }

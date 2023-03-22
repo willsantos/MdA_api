@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mda.Repository.Repositories
 {
-    public class AreaRepository : BaseRepository<Area>, IAreaArepository
+    public class AreaRepository : BaseRepository<Area>, IAreaRepository
     {
         public AreaRepository(MdaContext context) : base(context)
         {
