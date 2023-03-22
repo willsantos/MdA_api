@@ -24,6 +24,7 @@ namespace Mda.Repository.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>(new UsuarioEntityMap().Configure);
+            modelBuilder.Entity<Area>(new AreaEntityMap().Configure);
         }
     }
 }
