@@ -17,10 +17,10 @@ namespace Mda.IoC
             ConfigureMappers.ConfigureDependenciesMapper(services);
         }
 
-        public static void RegisterAppDependenciesContext(this IServiceCollection services/*, string connectionString*/)
+        public static void RegisterAppDependenciesContext(this IServiceCollection services)
         {
-            ConfigureRepository.ConfigureDependenciesRepository(services/*, connectionString*/);
+            ConfigureRepository.ConfigureDependenciesRepository(services);
         }
-        //connectionString
+        
     }
 }

@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Mda.Repository.Mappings
 {
-    public class AreaEntityMap
+    public class RodaEntityMap
     {
-        public void Configure(EntityTypeBuilder<Area> builder)
+        public void Configure(EntityTypeBuilder<Roda> builder)
         {
             builder
                 .Property(prop => prop.Tipo)
                 .HasConversion(
                     prop => prop.ToString(),
-            prop => (AreaDaVida)Enum.Parse(typeof(AreaDaVida), prop)
+            prop => (TipoArea)Enum.Parse(typeof(TipoArea), prop)
             );
         }
     }

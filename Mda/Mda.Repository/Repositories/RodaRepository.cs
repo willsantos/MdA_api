@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Mda.Repository.Repositories
 {
-    public class AreaRepository : BaseRepository<Usuario>, IUsuarioRepository
+    public class RodaRepository : BaseRepository<Roda>, IRodaRepository
     {
-        public AreaRepository(MdaContext context) : base(context)
+        public RodaRepository(MdaContext context) : base(context)
         {
         }
     }

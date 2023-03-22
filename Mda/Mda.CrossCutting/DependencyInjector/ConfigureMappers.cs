@@ -15,8 +15,8 @@ namespace Mda.CrossCutting.DependencyInjector
             var config = new AutoMapper.MapperConfiguration(cnf =>
             {
                 cnf.AddProfile(new UsuarioToContractMap());
-                /*cnf.AddProfile(new ProjetoToContractMap());
-                cnf.AddProfile(new TarefaToContractMap());
+                cnf.AddProfile(new AreaToContractMap());
+                /*cnf.AddProfile(new TarefaToContractMap());
                 cnf.AddProfile(new TarefaTogglToContractMap());
                 cnf.AddProfile(new ProjetoUsuarioToContractMap());*/
 

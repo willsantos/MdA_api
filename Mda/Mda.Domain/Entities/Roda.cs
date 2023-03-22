@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Mda.Domain.Entities
 {
-    public class Area : BaseEntity
+    public class Roda : BaseEntity
     {
-        public AreaDaVida Tipo { get; set; } 
+        public TipoArea Tipo { get; set; } 
     }
 }

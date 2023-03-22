@@ -6,19 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mda.Domain.Entities.Utils
 {
-    public enum AreaDaVida
+    public enum TipoArea
     {
-        DesenvolvimentoPessoal,
-        Profissional,
-        Finanças,
-        Lazer,
-        Relacionamento,
-        Casa,
-        Saúde,
-        FamiliaAmigos,
-        VidaSocial,
-        Espiritualidade,
-        Estudos,
-        EquilibrioEmocional
+        Inicio,
+        Fim
     }
 }
