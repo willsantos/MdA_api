@@ -22,6 +22,7 @@ namespace Mda.Repository.Context
         }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roda> Rodas { get; set; }
+        public DbSet<Area> Areas { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>(new UsuarioEntityMap().Configure);

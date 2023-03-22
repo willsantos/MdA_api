@@ -9,7 +9,7 @@ namespace Mda.Domain.Entities
     public class Area : BaseEntity
     {
         public string NomeArea { get; set; }
-        public Guid AreaId { get; set; }
+        public Guid RodaId { get; set; }
         public Roda Roda { get; set; }
         public int NotaInicio { get; set; }
         public int NotaFim { get; set; }
