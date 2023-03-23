@@ -18,7 +18,7 @@ namespace Mda.Service
             _mapper = mapper;
             _usuarioRepository = usuarioRepository;
         }
-
+        // criar postLogin
         public async Task<UsuarioResponse> Patch(Guid Id, UsuarioRequestRole Usuario)
         {
             var usuario = await _usuarioRepository.FindAsync(x => x.Id == Id);
