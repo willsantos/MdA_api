@@ -15,5 +15,6 @@ namespace Mda.Domain.Entities
         public DateTime DataAlvo { get; set; }
         public EnumStatus Status { get; set; }
         public float Progresso { get; set; }
+        public virtual ICollection<Tarefa> Tarefas { get; set; }
     }
 }
