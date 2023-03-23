@@ -20,8 +20,8 @@ namespace Mda.CrossCutting.DependencyInjector
             serviceCollection.AddScoped<IRodaRepository, RodaRepository>();
             serviceCollection.AddScoped<IAreaRepository, AreaRepository>();
             serviceCollection.AddScoped<IObjetivoRepository, ObjetivoRepository>();
-            /*  serviceCollection.AddScoped<IObjetivoRepository, ObjetivoRepository>();
-             serviceCollection.AddScoped<ITogglRepository, TogglRepository>();
+            serviceCollection.AddScoped<IProjetoRepository, ProjetoRepository>();
+            /*  serviceCollection.AddScoped<ITogglRepository, TogglRepository>();
              serviceCollection.AddScoped<ILogRepository, LogRepository>();*/
             /*serviceCollection.AddDbContext<MdaContext>(options => options.UseMySql(_configuration.GetConnectionString(connectionString),
                                                                                    ServerVersion.AutoDetect(connectionString)));*/
