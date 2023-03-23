@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Mda.Domain.UsuarioContratos
 {
-    public class UsuarioRequest
+    public class LoginRequest
     {
-        [Required(ErrorMessage = "Nome do usuario é obrigatório.")]
-        public string Nome { get; set; }
-
-        [Required(ErrorMessage = "Email é obrigatório.")]
+        [Required(ErrorMessage = "Email é obrigatório para Login")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -21,6 +18,5 @@ namespace Mda.Domain.UsuarioContratos
         [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
-
     }
 }
