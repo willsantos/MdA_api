@@ -10,7 +10,7 @@ namespace Mda.Domain.Entities
     public class Projeto : BaseEntity
     {
         public Guid ObjetivoId { get; set; }
-        public Objetivo Objetivo { get; set; }
+        public virtual Objetivo Objetivo { get; set; }
         public string Nome { get; set; }
         public DateTime DataAlvo { get; set; }
         public EnumStatus Status { get; set; }

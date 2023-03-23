@@ -10,7 +10,7 @@ namespace Mda.Domain.Entities
     {
         public string NomeArea { get; set; }
         public Guid RodaId { get; set; }
-        public Roda Roda { get; set; }
+        public virtual Roda Roda { get; set; }
         public int NotaInicio { get; set; }
         public int NotaFim { get; set; }
         public int Ano { get; set; }

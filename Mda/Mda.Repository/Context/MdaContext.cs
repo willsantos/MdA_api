@@ -16,10 +16,7 @@ namespace Mda.Repository.Context
         public MdaContext(DbContextOptions options) : base(options)
         {
         }
-
-        public MdaContext()
-        {
-        }
+      
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roda> Rodas { get; set; }
         public DbSet<Area> Areas { get; set; }
