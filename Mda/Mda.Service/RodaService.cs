@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Mda.Domain.Entities;
 using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
 using Mda.Repository.Repositories;
@@ -30,7 +31,11 @@ namespace Mda.Service
         public async Task<RodaResponse> Post(RodaRequest request)
         {
             var usuario = await _usuarioRepository.FindAsync(x => x.Id == UsuarioId && x.Ativo == true);
-            throw new NotImplementedException();
+            var roda = _mapper.Map<Roda>(request);
+            roda.DataCriacao = DateTime.Now;
+            roda.UsuarioId = (Guid)UsuarioId;
+            var rodaCadastrada = await _rodaRepository.AddAsync(roda);
+            return _mapper.Map<RodaResponse>(rodaCadastrada);
         }
 
         public Task Delete(Guid Id)
