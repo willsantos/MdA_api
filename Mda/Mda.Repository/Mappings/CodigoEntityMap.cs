@@ -11,7 +11,7 @@ namespace Mda.Repository.Mappings
 {
     public class CodigoEntityMap
     {
-        public void Configure(EntityTypeBuilder<Area> builder)
+        public void Configure(EntityTypeBuilder<Codigo> builder)
         {
             
         }

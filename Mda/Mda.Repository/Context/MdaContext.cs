@@ -26,6 +26,8 @@ namespace Mda.Repository.Context
         public DbSet<Objetivo> Objetivos { get; set; }
         public DbSet<Tarefa> Tarefas { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
+        public DbSet<Codigo> Codigos { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +37,7 @@ namespace Mda.Repository.Context
             modelBuilder.Entity<Objetivo>(new ObjetivoEntityMap().Configure);
             modelBuilder.Entity<Tarefa>(new TarefaEntityMap().Configure);
             modelBuilder.Entity<Projeto>(new ProjetoEntityMap().Configure);
+            modelBuilder.Entity<Codigo>(new CodigoEntityMap().Configure);
 
         }
     }

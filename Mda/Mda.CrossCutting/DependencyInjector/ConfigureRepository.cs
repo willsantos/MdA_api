@@ -22,7 +22,7 @@ namespace Mda.CrossCutting.DependencyInjector
             serviceCollection.AddScoped<IObjetivoRepository, ObjetivoRepository>();
             serviceCollection.AddScoped<IProjetoRepository, ProjetoRepository>();
             serviceCollection.AddScoped<ITarefaRepository, TarefaRepository>();
-           /* serviceCollection.AddScoped<ILogRepository, LogRepository>();*/
+            serviceCollection.AddScoped<ICodigoRepository, CodigoRepository>();
             /*serviceCollection.AddDbContext<MdaContext>(options => options.UseMySql(_configuration.GetConnectionString(connectionString),
                                                                                    ServerVersion.AutoDetect(connectionString)));*/
 
