@@ -12,5 +12,8 @@ namespace Mda.Domain.UsuarioContratos
     {
         [Required(ErrorMessage = "Tipo é obrigatório.")]
         public TipoArea Tipo { get; set; }
+
+        [Required(ErrorMessage = "Ano é obrigatório.")]
+        public DateTime Ano { get; set; }
     }
 }

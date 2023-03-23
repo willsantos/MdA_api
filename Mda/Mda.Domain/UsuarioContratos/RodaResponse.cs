@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Mda.Domain.UsuarioContratos
 {
     public class RodaResponse : RodaRequest
-    {
+    {     
     }
 }

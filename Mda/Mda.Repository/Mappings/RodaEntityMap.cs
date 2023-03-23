@@ -1,5 +1,6 @@
 ﻿using Mda.Domain.Entities;
 using Mda.Domain.Entities.Utils;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,13 @@ namespace Mda.Repository.Mappings
                     prop => prop.ToString(),
             prop => (TipoArea)Enum.Parse(typeof(TipoArea), prop)
             );
-                           
+
+            builder
+                .HasOne(p => p.Usuario)
+                .WithMany(p => p.Rodas)
+                .HasForeignKey(p => p.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

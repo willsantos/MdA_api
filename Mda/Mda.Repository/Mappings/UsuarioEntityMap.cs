@@ -1,5 +1,6 @@
 ﻿using Mda.Domain.Entities;
 using Mda.Domain.Entities.Utils;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,12 @@ namespace Mda.Repository.Mappings
                 .HasConversion(
                     prop => prop.ToString(),
             prop => (EnumAcesso)Enum.Parse(typeof(EnumAcesso), prop)
-            ); 
+            );
 
+            builder
+              .HasMany(p => p.Rodas)
+              .WithOne(p => p.Usuario)              
+              .OnDelete(DeleteBehavior.Restrict);
             builder.HasIndex(prop => prop.Email).IsUnique();
         }
     }

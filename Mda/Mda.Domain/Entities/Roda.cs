@@ -9,6 +9,9 @@ namespace Mda.Domain.Entities
 {
     public class Roda : BaseEntity
     {
+        public Guid UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public DateTime Ano { get; set; }
         public TipoArea Tipo { get; set; }
         public virtual ICollection<Area> Areas { get; set; }
     }
