@@ -29,7 +29,7 @@ namespace Mda.Repository.Context
             modelBuilder.Entity<Usuario>(new UsuarioEntityMap().Configure);
             modelBuilder.Entity<Roda>(new RodaEntityMap().Configure);
             modelBuilder.Entity<Area>(new AreaEntityMap().Configure);
-            //modelBuilder.Entity<Objetivo>(new ObjetivoEntityMap().Configure);
+            modelBuilder.Entity<Objetivo>(new ObjetivoEntityMap().Configure);
 
         }
     }
