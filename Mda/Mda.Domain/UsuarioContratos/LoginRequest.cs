@@ -14,7 +14,7 @@ namespace Mda.Domain.UsuarioContratos
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Senha do usuario é obrigatória.")]
-        [StringLength(18, MinimumLength = 6)]
+        [StringLength(99, MinimumLength = 6)]
         [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
