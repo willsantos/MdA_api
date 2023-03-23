@@ -13,6 +13,7 @@ namespace Mda.Domain.Entities
         public DateTime DataFinal { get; set; }
         public string Bloqueios { get; set; }
         public string Recursos { get; set; }
+        public virtual ICollection<Projeto> Projetos { get; set; }
 
     }
 }
