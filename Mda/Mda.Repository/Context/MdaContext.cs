@@ -38,7 +38,6 @@ namespace Mda.Repository.Context
             modelBuilder.Entity<Tarefa>(new TarefaEntityMap().Configure);
             modelBuilder.Entity<Projeto>(new ProjetoEntityMap().Configure);
             modelBuilder.Entity<Codigo>(new CodigoEntityMap().Configure);
-
         }
     }
 }

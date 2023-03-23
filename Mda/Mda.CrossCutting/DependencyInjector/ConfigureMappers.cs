@@ -19,6 +19,8 @@ namespace Mda.CrossCutting.DependencyInjector
                 cnf.AddProfile(new ObjetivoToContractMap());
                 cnf.AddProfile(new ProjetoToContractMap());
                 cnf.AddProfile(new TarefaToContractMap());
+                cnf.AddProfile(new CodigoToContractMap());
+                cnf.AddProfile(new RodaToContractMap());
 
             });
 
