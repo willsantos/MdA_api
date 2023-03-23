@@ -23,11 +23,13 @@ namespace Mda.Repository.Context
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roda> Rodas { get; set; }
         public DbSet<Area> Areas { get; set; }
+        public DbSet<Objetivo> Objetivos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>(new UsuarioEntityMap().Configure);
             modelBuilder.Entity<Roda>(new RodaEntityMap().Configure);
             modelBuilder.Entity<Area>(new AreaEntityMap().Configure);
+            //modelBuilder.Entity<Objetivo>(new ObjetivoEntityMap().Configure);
 
         }
     }

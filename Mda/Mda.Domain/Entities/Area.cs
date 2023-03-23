@@ -14,7 +14,7 @@ namespace Mda.Domain.Entities
         public int NotaInicio { get; set; }
         public int NotaFim { get; set; }
         public int Ano { get; set; }
-        
+        public virtual ICollection<Objetivo> Objetivos { get; set; }
 
     }
 }
