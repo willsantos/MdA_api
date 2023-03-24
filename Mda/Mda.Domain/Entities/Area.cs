@@ -12,7 +12,7 @@ namespace Mda.Domain.Entities
         public Guid RodaId { get; set; }
         public virtual Roda Roda { get; set; }
         public int NotaInicio { get; set; }
-        public int NotaFim { get; set; }
+        public int? NotaFim { get; set; }
         public int Ano { get; set; }
         public virtual ICollection<Objetivo> Objetivos { get; set; }
 
