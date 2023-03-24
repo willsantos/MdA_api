@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Mda.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mda.Domain.Entities
+namespace Mda.Domain.UsuarioContratos
 {
-    public class Area : BaseEntity
+    public class AreaResponse 
     {
         public string NomeArea { get; set; }
         public Guid RodaId { get; set; }
@@ -14,7 +15,5 @@ namespace Mda.Domain.Entities
         public int NotaInicio { get; set; }
         public int? NotaFim { get; set; }
         public int Ano { get; set; }
-        public virtual ICollection<Objetivo> Objetivos { get; set; }
-
     }
 }
