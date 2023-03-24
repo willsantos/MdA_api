@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mda.Domain.Interfaces
 {
-    public interface IAreaService : IBaseService<RodaRequest, RodaResponse>
+    public interface IAreaService : IBaseService<AreaRequestInicio, AreaResponse>
     {
     }
 }
