@@ -9,5 +9,6 @@ namespace Mda.Domain.Interfaces
 {
     public interface IAreaService : IBaseService<AreaRequestInicio, AreaResponse>
     {
+        Task<AreaResponse> Post(AreaRequestFim request);
     }
 }

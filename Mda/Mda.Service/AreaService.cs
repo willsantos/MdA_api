@@ -29,6 +29,13 @@ namespace Mda.Service
             var AreaCadastrada = await _areaRepository.AddAsync(requestArea);
             return _mapper.Map<AreaResponse>(AreaCadastrada);
         }
+        public async Task<AreaResponse> Post(AreaRequestFim request)
+        {
+            var requestArea = _mapper.Map<Area>(request);
+            requestArea.DataAtualizacao = DateTime.Now;
+            var AreaCadastrada = await _areaRepository.EditAsync(requestArea);
+            return _mapper.Map<AreaResponse>(AreaCadastrada);
+        }
         public async Task<AreaResponse> GetById(Guid id)
         {
             var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id && x.Roda.UsuarioId == UsuarioId);
@@ -77,8 +84,7 @@ namespace Mda.Service
             AreaEncontrada.Ativo = false;
             AreaEncontrada.DataAtualizacao = DateTime.Now;
             await _areaRepository.EditAsync(AreaEncontrada);
-        }                 
-
-      
+        }
+     
     }
 }
