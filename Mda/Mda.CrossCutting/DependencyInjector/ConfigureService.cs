@@ -15,9 +15,9 @@ namespace Mda.CrossCutting.DependencyInjector
         public static void ConfigureDependenciesService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IUsuarioService, UsuarioService>();
-            /*serviceCollection.AddScoped<IProjetoService, ProjetoService>();
-            serviceCollection.AddScoped<IAuthService, AuthService>();
-            serviceCollection.AddScoped<ITarefaService, TarefaService>();
+            serviceCollection.AddScoped<IRodaService, RodaService>();
+            serviceCollection.AddScoped<IAreaService, AreaService>();
+            /*serviceCollection.AddScoped<ITarefaService, TarefaService>();
             serviceCollection.AddScoped<IEmailService, EmailService>();
             serviceCollection.AddScoped<IRelatorioService, RelatorioService>();
             serviceCollection.AddScoped<ITogglService, TogglService>();
