@@ -8,6 +8,7 @@ namespace Mda.Domain.Entities
 {
     public class Objetivo : BaseEntity
     {
+        public string Nome { get; set; }
         public Guid AreaId { get; set; }
         public virtual Area Area { get; set; }
         public DateTime DataFinal { get; set; }

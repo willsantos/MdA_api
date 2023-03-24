@@ -10,6 +10,8 @@ namespace Mda.Domain.UsuarioContratos
 {
     public class ObjetivoRequest
     {
+        [Required(ErrorMessage = "Nome Objetivo é obrigatório")]
+        public string Nome { get; set; }
         [Required(ErrorMessage = "Id de AREA é obrigatório")]
         public Guid AreaId { get; set; }
 

@@ -23,7 +23,10 @@ namespace Mda.Service
             _usuarioRepository = usuarioRepository;
             _objetivoRepository = objetivoRepository;
         }
-
+        public Task<ObjetivoResponse> Post(ObjetivoRequest request)
+        {
+            throw new NotImplementedException();
+        }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
@@ -37,12 +40,7 @@ namespace Mda.Service
         public Task<ObjetivoResponse> GetById(Guid id)
         {
             throw new NotImplementedException();
-        }
-
-        public Task<ObjetivoResponse> Post(ObjetivoRequest request)
-        {
-            throw new NotImplementedException();
-        }
+        }       
 
         public Task<ObjetivoResponse> Put(ObjetivoRequest request, Guid? id)
         {
