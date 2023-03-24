@@ -46,15 +46,19 @@ namespace Mda.Service
             }
             return _mapper.Map<AreaResponse>(AreaEncontrada);            
         }
+        public async Task<IEnumerable<AreaResponse>> Get()
+        {
+            var listArea = await _areaRepository.ListAsync(x => x.Ativo && x.Roda.UsuarioId == UsuarioId);
+            if(listArea == null)
+            {
+                throw new ArgumentException("Você não tem área cadastrada");
+            }
+            return _mapper.Map<IEnumerable<AreaResponse>>(listArea);
+        }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<AreaResponse>> Get()
-        {
-            throw new NotImplementedException();
-        }                  
+        }                    
 
         public Task<AreaResponse> Put(AreaRequestInicio request, Guid? id)
         {
