@@ -55,9 +55,22 @@ namespace Mda.Service
             return _mapper.Map<IEnumerable<RodaResponse>>(listRodas);
         }         
 
-        public Task<RodaResponse> Put(RodaRequest request, Guid? id)
+        public async Task<RodaResponse> Put(RodaRequest request, Guid? id)
         {
-            throw new NotImplementedException();
+            var RodaEncontrada = await _rodaRepository.FindAsync(x => x.Id == id && x.UsuarioId == UsuarioId);
+            RodaEncontrada = _mapper.Map<Roda>(request);
+            if (RodaEncontrada == null)
+            {
+                throw new Exception("Roda não existe");
+            }
+            if (RodaEncontrada.Ativo == false)
+            {
+                throw new Exception("Roda não está ativa");
+            }
+            RodaEncontrada.DataAtualizacao = DateTime.Now;
+            await _rodaRepository.EditAsync(RodaEncontrada);
+            return _mapper.Map<RodaResponse>(RodaEncontrada);
+            
         }
         public async Task Delete(Guid Id)
         {
