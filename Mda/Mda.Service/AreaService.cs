@@ -63,9 +63,20 @@ namespace Mda.Service
             await _areaRepository.EditAsync(AreaEncontrada);
             return _mapper.Map<AreaResponse>(AreaEncontrada);
         }
-        public Task Delete(Guid Id)
+        public async Task Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == Id && x.Roda.UsuarioId == UsuarioId);
+            if (AreaEncontrada == null)
+            {
+                throw new Exception("Area não existe");
+            }
+            if (AreaEncontrada.Ativo == false)
+            {
+                throw new Exception("Area não está ativa");
+            }
+            AreaEncontrada.Ativo = false;
+            AreaEncontrada.DataAtualizacao = DateTime.Now;
+            await _areaRepository.EditAsync(AreaEncontrada);
         }                 
 
       
