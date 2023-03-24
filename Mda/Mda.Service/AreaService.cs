@@ -33,6 +33,19 @@ namespace Mda.Service
             var AreaCadastrada = await _areaRepository.AddAsync(requestArea);
             return _mapper.Map<AreaResponse>(AreaCadastrada);
         }
+        public async Task<AreaResponse> GetById(Guid id)
+        {
+            var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id && x.Roda.UsuarioId == UsuarioId);
+            if(AreaEncontrada == null)
+            {
+                throw new ArgumentException("Você não tem área cadastrada");
+            }
+            if(AreaEncontrada.Ativo == false)
+            {
+                throw new ArgumentException("A respectiva Area buscada foi deletada logicamente");
+            }
+            return _mapper.Map<AreaResponse>(AreaEncontrada);            
+        }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
@@ -41,12 +54,7 @@ namespace Mda.Service
         public Task<IEnumerable<AreaResponse>> Get()
         {
             throw new NotImplementedException();
-        }
-
-        public Task<AreaResponse> GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }             
+        }                  
 
         public Task<AreaResponse> Put(AreaRequestInicio request, Guid? id)
         {
