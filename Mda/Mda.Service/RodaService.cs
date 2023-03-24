@@ -47,16 +47,33 @@ namespace Mda.Service
         public async Task<IEnumerable<RodaResponse>> Get()
         {
             var listRodas = await _rodaRepository.ListAsync(x => x.UsuarioId == UsuarioId);
+            if (listRodas == null)
+            {
+                throw new Exception("Você não tem Rodas Cadastradas");
+            }
+
             return _mapper.Map<IEnumerable<RodaResponse>>(listRodas);
-        }
-        public Task Delete(Guid Id)
-        {
-            throw new NotImplementedException();
-        }      
+        }         
 
         public Task<RodaResponse> Put(RodaRequest request, Guid? id)
         {
             throw new NotImplementedException();
+        }
+        public async Task Delete(Guid Id)
+        {
+            var RodaEncontrada = await _rodaRepository.FindAsync(x => x.Id == Id && x.UsuarioId == UsuarioId);
+            if (RodaEncontrada == null)
+            {
+                throw new Exception("Roda não existe");
+            }
+            if (RodaEncontrada.Ativo == false)
+            {
+                throw new Exception("Roda não está ativa");
+            }
+            RodaEncontrada.Ativo = false;
+            RodaEncontrada.DataAtualizacao = DateTime.Now;
+            await _rodaRepository.EditAsync(RodaEncontrada);
+
         }
     }
 }
