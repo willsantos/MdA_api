@@ -13,5 +13,6 @@ namespace Mda.Domain.Entities
         public string Nome { get; set; }
         public string Senha { get; set; }
         public EnumAcesso Role { get; set; }
+        public virtual ICollection<Roda> Rodas { get; set; }
     }
 }
