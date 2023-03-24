@@ -3,11 +3,7 @@ using Mda.Domain.Entities;
 using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Mda.Service
 {
@@ -55,14 +51,23 @@ namespace Mda.Service
             }
             return _mapper.Map<IEnumerable<AreaResponse>>(listArea);
         }
+        public async Task<AreaResponse> Put(AreaRequestInicio request, Guid? id)
+        {
+            var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id && x.Roda.UsuarioId == UsuarioId);
+            AreaEncontrada = _mapper.Map<Area>(request);
+            if (AreaEncontrada == null)
+            {
+                throw new ArgumentException("Essa Area não está cadastrada ou você não tem acesso");
+            }
+            AreaEncontrada.DataAtualizacao = DateTime.Now;
+            await _areaRepository.EditAsync(AreaEncontrada);
+            return _mapper.Map<AreaResponse>(AreaEncontrada);
+        }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
-        }                    
+        }                 
 
-        public Task<AreaResponse> Put(AreaRequestInicio request, Guid? id)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
