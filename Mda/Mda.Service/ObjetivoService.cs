@@ -43,41 +43,41 @@ namespace Mda.Service
             var listaObjetivos = await _objetivoRepository.ListAsync(x => x.Area.Roda.UsuarioId == UsuarioId);
             if (listaObjetivos == null)
             {
-                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+                throw new Exception("O objetivo buscado não existe ou você não tem acesso");
             }
             return _mapper.Map<IEnumerable<ObjetivoResponse>>(listaObjetivos);
         }
         public async Task<ObjetivoResponse> Put(ObjetivoRequest request, Guid? id)
         {
-            var objetoEncontrado = await _objetivoRepository.FindAsync(x => x.Id == id && x.Area.Roda.UsuarioId == UsuarioId);
-            objetoEncontrado = _mapper.Map<Objetivo>(request);
-            if(objetoEncontrado == null)
+            var objetivoEncontrado = await _objetivoRepository.FindAsync(x => x.Id == id && x.Area.Roda.UsuarioId == UsuarioId);
+            objetivoEncontrado = _mapper.Map<Objetivo>(request);
+            if(objetivoEncontrado == null)
             {
-                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+                throw new Exception("O objetivo buscado não existe ou você não tem acesso");
             }
-            if (objetoEncontrado.Ativo == false)
+            if (objetivoEncontrado.Ativo == false)
             {
                 throw new Exception("Esse objetivo está inativo");
             }
-            objetoEncontrado.DataCriacao = DateTime.Now;
-            await _objetivoRepository.EditAsync(objetoEncontrado);
-            return _mapper.Map<ObjetivoResponse>(objetoEncontrado);
+            objetivoEncontrado.DataCriacao = DateTime.Now;
+            await _objetivoRepository.EditAsync(objetivoEncontrado);
+            return _mapper.Map<ObjetivoResponse>(objetivoEncontrado);
             
         }
 
         public async Task Delete(Guid Id)
         {
-            var objetoEncontrado = await _objetivoRepository.FindAsync(x => x.Id == Id && x.Area.Roda.UsuarioId == UsuarioId);
-            if (objetoEncontrado == null)
+            var objetivoEncontrado = await _objetivoRepository.FindAsync(x => x.Id == Id && x.Area.Roda.UsuarioId == UsuarioId);
+            if (objetivoEncontrado == null)
             {
                 throw new Exception("O objeto buscado não existe ou você não tem acesso");
             }
-            if (objetoEncontrado.Ativo == false)
+            if (objetivoEncontrado.Ativo == false)
             {
                 throw new Exception("Esse objetivo já está inativo");
             }
-            objetoEncontrado.Ativo = false;
-            objetoEncontrado.DataAtualizacao = DateTime.Now;            
+            objetivoEncontrado.Ativo = false;
+            objetivoEncontrado.DataAtualizacao = DateTime.Now;            
         }              
                
     }
