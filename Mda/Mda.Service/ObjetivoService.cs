@@ -2,6 +2,7 @@
 using Mda.Domain.Entities;
 using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
+using Mda.Repository.Repositories;
 using Microsoft.AspNetCore.Http;
 
 
@@ -28,6 +29,15 @@ namespace Mda.Service
             var objetoACadastrar = await _objetivoRepository.AddAsync(objetivo);
             return _mapper.Map<ObjetivoResponse>(objetoACadastrar);
         }
+        public async Task<ObjetivoResponse> GetById(Guid id)
+        {
+            var objetivo = await _objetivoRepository.FindAsync(x => x.Id == id && x.Area.Roda.UsuarioId == UsuarioId);
+            if(objetivo == null)
+            {
+                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+            }
+            return _mapper.Map<ObjetivoResponse>(objetivo);
+        }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
@@ -36,12 +46,7 @@ namespace Mda.Service
         public Task<IEnumerable<ObjetivoResponse>> Get()
         {
             throw new NotImplementedException();
-        }
-
-        public Task<ObjetivoResponse> GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }       
+        }          
 
         public Task<ObjetivoResponse> Put(ObjetivoRequest request, Guid? id)
         {
