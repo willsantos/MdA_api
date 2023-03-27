@@ -38,15 +38,19 @@ namespace Mda.Service
             }
             return _mapper.Map<ObjetivoResponse>(objetivo);
         }
+        public async Task<IEnumerable<ObjetivoResponse>> Get()
+        {
+            var listaObjetivos = await _objetivoRepository.ListAsync(x => x.Area.Roda.UsuarioId == UsuarioId);
+            if (listaObjetivos == null)
+            {
+                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+            }
+            return _mapper.Map<IEnumerable<ObjetivoResponse>>(listaObjetivos);
+        }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<ObjetivoResponse>> Get()
-        {
-            throw new NotImplementedException();
-        }          
+        }              
 
         public Task<ObjetivoResponse> Put(ObjetivoRequest request, Guid? id)
         {
