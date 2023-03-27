@@ -34,7 +34,7 @@ namespace Mda.Service
             var objetivo = await _objetivoRepository.FindAsync(x => x.Id == id && x.Area.Roda.UsuarioId == UsuarioId);
             if(objetivo == null)
             {
-                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+                throw new Exception("O objetivo buscado não existe ou você não tem acesso");
             }
             return _mapper.Map<ObjetivoResponse>(objetivo);
         }
@@ -70,7 +70,7 @@ namespace Mda.Service
             var objetivoEncontrado = await _objetivoRepository.FindAsync(x => x.Id == Id && x.Area.Roda.UsuarioId == UsuarioId);
             if (objetivoEncontrado == null)
             {
-                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+                throw new Exception("O objetivo buscado não existe ou você não tem acesso");
             }
             if (objetivoEncontrado.Ativo == false)
             {
