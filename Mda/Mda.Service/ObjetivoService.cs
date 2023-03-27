@@ -65,9 +65,19 @@ namespace Mda.Service
             
         }
 
-        public Task Delete(Guid Id)
+        public async Task Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var objetoEncontrado = await _objetivoRepository.FindAsync(x => x.Id == Id && x.Area.Roda.UsuarioId == UsuarioId);
+            if (objetoEncontrado == null)
+            {
+                throw new Exception("O objeto buscado não existe ou você não tem acesso");
+            }
+            if (objetoEncontrado.Ativo == false)
+            {
+                throw new Exception("Esse objetivo já está inativo");
+            }
+            objetoEncontrado.Ativo = false;
+            objetoEncontrado.DataAtualizacao = DateTime.Now;            
         }              
                
     }
