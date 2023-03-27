@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Mda.Domain.Entities;
 using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
 using Microsoft.AspNetCore.Http;
@@ -19,9 +20,13 @@ namespace Mda.Service
             _usuarioRepository = usuarioRepository;
             _objetivoRepository = objetivoRepository;
         }
-        public Task<ObjetivoResponse> Post(ObjetivoRequest request)
+        public async Task<ObjetivoResponse> Post(ObjetivoRequest request)
         {
-            throw new NotImplementedException();
+            var usuario = await _usuarioRepository.FindAsync(x => x.Id == UsuarioId && x.Ativo == true);
+            var objetivo = _mapper.Map<Objetivo>(request);
+            objetivo.DataCriacao = DateTime.Now;
+            var objetoACadastrar = await _objetivoRepository.AddAsync(objetivo);
+            return _mapper.Map<ObjetivoResponse>(objetoACadastrar);
         }
         public Task Delete(Guid Id)
         {
