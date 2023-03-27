@@ -26,8 +26,8 @@ namespace Mda.Service
             var usuario = await _usuarioRepository.FindAsync(x => x.Id == UsuarioId && x.Ativo == true);
             var objetivo = _mapper.Map<Objetivo>(request);
             objetivo.DataCriacao = DateTime.Now;
-            var objetoACadastrar = await _objetivoRepository.AddAsync(objetivo);
-            return _mapper.Map<ObjetivoResponse>(objetoACadastrar);
+            var objetivoACadastrar = await _objetivoRepository.AddAsync(objetivo);
+            return _mapper.Map<ObjetivoResponse>(objetivoACadastrar);
         }
         public async Task<ObjetivoResponse> GetById(Guid id)
         {
