@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Mda.Domain.Contratos;
+using Mda.Domain.Entities;
 using Mda.Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -16,13 +17,19 @@ namespace Mda.Service
         private readonly IProjetoRepository _projetoRepository;
         private readonly ITarefaRepository _tarefaRepository;
         private readonly IMapper _mapper;
-        public ProjetoService(IHttpContextAccessor httpContextAccessor, 
-                              IProjetoRepository projetoRepository, 
+        public ProjetoService(IHttpContextAccessor httpContextAccessor,
+                              IProjetoRepository projetoRepository,
                               ITarefaRepository tarefaRepository, IMapper mapper) : base(httpContextAccessor)
         {
             _projetoRepository = projetoRepository;
             _tarefaRepository = tarefaRepository;
             _mapper = mapper;
+        }
+        public async Task<ProjetoResponse> Post(ProjetoRequest request)
+        {
+            var projetoEntity = _mapper.Map<Projeto>(request);
+            var projetoCadastrado = await _projetoRepository.AddAsync(projetoEntity);
+            return _mapper.Map<ProjetoResponse>(projetoCadastrado);
         }
 
         public Task Delete(Guid Id)
@@ -36,11 +43,6 @@ namespace Mda.Service
         }
 
         public Task<ProjetoResponse> GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ProjetoResponse> Post(ProjetoRequest request)
         {
             throw new NotImplementedException();
         }
