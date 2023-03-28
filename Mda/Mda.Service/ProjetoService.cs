@@ -61,9 +61,20 @@ namespace Mda.Service
             }
             return _mapper.Map<IEnumerable<ProjetoResponse>>(listaDeProjetos);            
         }
-        public Task Delete(Guid Id)
+        public async Task Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var projetoEncontrado = await _projetoRepository.FindAsync(x => x.Id == Id && x.Objetivo.Area.Roda.UsuarioId == UsuarioId);
+            if (projetoEncontrado == null)
+            {
+                throw new Exception("Projeto não existe");
+            }
+            if (projetoEncontrado.Ativo == false)
+            {
+                throw new Exception("Projeto não está ativa");
+            }
+            projetoEncontrado.Ativo = false;
+            projetoEncontrado.DataAtualizacao = DateTime.Now;
+            await _projetoRepository.EditAsync(projetoEncontrado);
         }  
 
       
