@@ -51,10 +51,15 @@ namespace Mda.Service
                 throw new ArgumentException("Esse projeto não está cadastrado ou você não tem acesso");
             }
             return _mapper.Map<ProjetoResponse>(projetoEncontrado);
-        }
-        public Task<IEnumerable<ProjetoResponse>> Get()
+        }        
+        public async Task<IEnumerable<ProjetoResponse>> Get()
         {
-            throw new NotImplementedException();
+            var listaDeProjetos = await _projetoRepository.ListAsync(x => x.Objetivo.Area.Roda.UsuarioId == UsuarioId);
+            if (listaDeProjetos == null)
+            {
+                throw new ArgumentException("Você não tem projetos cadastrados");
+            }
+            return _mapper.Map<IEnumerable<ProjetoResponse>>(listaDeProjetos);            
         }
         public Task Delete(Guid Id)
         {
