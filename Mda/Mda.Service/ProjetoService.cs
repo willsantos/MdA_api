@@ -70,7 +70,7 @@ namespace Mda.Service
             }
             if (projetoEncontrado.Ativo == false)
             {
-                throw new Exception("Projeto não está ativa");
+                throw new Exception("Projeto não está ativo");
             }
             projetoEncontrado.Ativo = false;
             projetoEncontrado.DataAtualizacao = DateTime.Now;
