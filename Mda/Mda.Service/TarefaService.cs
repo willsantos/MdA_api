@@ -79,9 +79,22 @@ namespace Mda.Service
             }
             return _mapper.Map<IEnumerable<TarefaResponse>>(listaTarefas);
         }
-        public Task Delete(Guid Id)
+        public async Task Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var tarefaEncontrada = await _tarefaRepository.FindAsync(x => x.Id == Id && x.Projeto
+                                                                                         .Objetivo
+                                                                                         .Area.Roda
+                                                                                         .UsuarioId == UsuarioId);
+            if (tarefaEncontrada == null)
+            {
+                throw new ArgumentException("Essa Tarefa não está cadastrada ou você não tem acesso");
+            }
+            if (tarefaEncontrada.Ativo == false)
+            {
+                throw new ArgumentException("Essa Tarefa já foi deletada logicamente");
+            }
+            tarefaEncontrada.Ativo = false;
+            await _tarefaRepository.EditAsync(tarefaEncontrada);            
         }
 
 
