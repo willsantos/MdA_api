@@ -43,20 +43,25 @@ namespace Mda.Service
             await _projetoRepository.EditAsync(projetoEncontrado);
             return _mapper.Map<ProjetoResponse>(projetoEncontrado);
         }
-        public Task Delete(Guid Id)
+        public async Task<ProjetoResponse> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var projetoEncontrado = await _projetoRepository.FindAsync(x => x.Id == id && x.Objetivo.Area.Roda.UsuarioId == UsuarioId);
+            if (projetoEncontrado == null)
+            {
+                throw new ArgumentException("Esse projeto não está cadastrado ou você não tem acesso");
+            }
+            return _mapper.Map<ProjetoResponse>(projetoEncontrado);
         }
-
         public Task<IEnumerable<ProjetoResponse>> Get()
         {
             throw new NotImplementedException();
         }
-
-        public Task<ProjetoResponse> GetById(Guid id)
+        public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
-        }
+        }  
+
+      
        
     }
 }
