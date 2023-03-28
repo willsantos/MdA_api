@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Mda.Domain.Contratos;
+using Mda.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,8 @@ namespace Mda.CrossCutting.Mappers
     {
         public TarefaToContractMap()
         {
+            CreateMap<Tarefa, TarefaRequest>().ReverseMap();
+            CreateMap<Tarefa, TarefaResponse>().ReverseMap();
         }
     }
 }
