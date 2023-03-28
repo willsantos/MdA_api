@@ -57,21 +57,34 @@ namespace Mda.Service
                                                                                          .Objetivo
                                                                                          .Area.Roda
                                                                                          .UsuarioId == UsuarioId);
-            if(tarefaEncontrada == null)
+            if (tarefaEncontrada == null)
             {
                 throw new ArgumentException("Essa Tarefa não está cadastrada ou você não tem acesso");
             }
+            if (tarefaEncontrada.Ativo == false)
+            {
+                throw new ArgumentException("Essa Tarefa foi deletada logicamente");
+            }
             return _mapper.Map<TarefaResponse>(tarefaEncontrada);
+        }
+        public async Task<IEnumerable<TarefaResponse>> Get()
+        {
+            var listaTarefas = await _tarefaRepository.ListAsync(x => x.Projeto
+                                                                       .Objetivo
+                                                                       .Area.Roda
+                                                                       .UsuarioId == UsuarioId);
+            if (listaTarefas == null)
+            {
+                throw new ArgumentException("Você não tem tarefas cadastradas");
+            }
+            return _mapper.Map<IEnumerable<TarefaResponse>>(listaTarefas);
         }
         public Task Delete(Guid Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<TarefaResponse>> Get()
-        {
-            throw new NotImplementedException();
-        }       
+
 
     }
 }
