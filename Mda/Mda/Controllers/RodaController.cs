@@ -1,7 +1,10 @@
-﻿using Mda.Domain.Interfaces;
+﻿using Mda.Domain.Entities.Utils;
+using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Data;
 
 namespace Mda.Api.Controllers
 {
@@ -16,6 +19,7 @@ namespace Mda.Api.Controllers
             _rodaService = rodaService;
         }
         [HttpPost]
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [SwaggerOperation(Summary = "Cadastra um nova Roda no banco.", Description = "Retorna dados da Roda.")]
         [ProducesResponseType(201)]
         public async Task<ActionResult<RodaResponse>> Post([FromBody] RodaRequest roda)
