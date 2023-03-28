@@ -61,11 +61,12 @@ namespace Mda.Service
         public async Task<AreaResponse> Put(AreaRequestInicio request, Guid? id)
         {
             var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id && x.Roda.UsuarioId == UsuarioId);
-            AreaEncontrada = _mapper.Map<Area>(request);
+            
             if (AreaEncontrada == null)
             {
                 throw new ArgumentException("Essa Area não está cadastrada ou você não tem acesso");
             }
+            AreaEncontrada = _mapper.Map<Area>(request);
             AreaEncontrada.DataAtualizacao = DateTime.Now;
             await _areaRepository.EditAsync(AreaEncontrada);
             return _mapper.Map<AreaResponse>(AreaEncontrada);
