@@ -34,6 +34,22 @@ namespace Mda.Service
             return _mapper.Map<TarefaResponse>(tarefaRequest);
 
         }
+        public async Task<TarefaResponse> Put(TarefaRequest request, Guid? id)
+        {
+            var tarefaEncontrada = await _tarefaRepository.FindAsync(x => x.Id == id && x.Projeto
+                                                                                         .Objetivo
+                                                                                         .Area.Roda.UsuarioId == UsuarioId);
+            if (tarefaEncontrada == null)
+            {
+
+                throw new ArgumentException("Essa Tarefa não está cadastrada ou você não tem acesso");
+
+            }
+            tarefaEncontrada = _mapper.Map<Tarefa>(request);
+            tarefaEncontrada.DataAtualizacao = DateTime.Now;
+            await _tarefaRepository.EditAsync(tarefaEncontrada);
+            return _mapper.Map<TarefaResponse>(tarefaEncontrada);
+        }
 
         public Task Delete(Guid Id)
         {
@@ -49,9 +65,6 @@ namespace Mda.Service
         {
             throw new NotImplementedException();
         }
-        public Task<TarefaResponse> Put(TarefaRequest request, Guid? id)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
