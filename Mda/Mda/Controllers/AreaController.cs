@@ -101,5 +101,21 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        public async Task<ActionResult> Delete([FromRoute] Guid id)
+        {
+            try
+            {
+                await _areaService.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
