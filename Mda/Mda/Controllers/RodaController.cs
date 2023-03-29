@@ -47,5 +47,14 @@ namespace Mda.Api.Controllers
             var result = await _rodaService.Get();
             return Ok(result);
         }
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca roda para mudança de dados.", Description = "Retorna a roda modificada.")]
+        public async Task<ActionResult<RodaResponse>> Put([FromBody] RodaRequest rodaAlteracao, [FromRoute] Guid id)
+        {
+            var result = await _rodaService.Put(rodaAlteracao, id);
+            return Ok(result);
+        }
     }
 }
