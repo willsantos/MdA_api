@@ -50,5 +50,22 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [HttpGet]
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [SwaggerOperation(Summary = "Busca Todos As Areas ativas.", Description = "Retorna todas as Areas Ativas.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<IEnumerable<AreaResponse>>> Get()
+        {
+            try
+            {
+                var result = await _areaService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
