@@ -28,8 +28,16 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(201)]
         public async Task<ActionResult<UsuarioResponse>> Post([FromBody] UsuarioRequest usuario)
         {
-            var result = await _usuarioService.Post(usuario);
-            return Ok(result);
+            try
+            {
+                var result = await _usuarioService.Post(usuario);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -45,8 +53,16 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(200)]
         public async Task<ActionResult<UsuarioResponse>> GetById(Guid id)
         {
-            var result = await _usuarioService.GetById(id);
-            return Ok(result);
+            try
+            {
+                var result = await _usuarioService.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -62,8 +78,16 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(200)]
         public async Task<ActionResult<IEnumerable<UsuarioResponse>>> Get()
         {
-            var result = await _usuarioService.Get();
-            return Ok(result);
+            try
+            {
+                var result = await _usuarioService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
         /// <summary>
         /// Busca usuário e realiza mudança de dados.
@@ -78,8 +102,16 @@ namespace Mda.Api.Controllers
         [SwaggerOperation(Summary = "Busca usuário para mudança de dados.", Description = "Retorna o usuario modificado.")]
         public async Task<ActionResult<UsuarioResponse>> Put([FromBody] UsuarioRequest usuarioAlteracao, [FromRoute] Guid id)
         {
-            var result = await _usuarioService.Put(usuarioAlteracao, id);
-            return Ok(result);
+            try
+            {
+                var result = await _usuarioService.Put(usuarioAlteracao, id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -95,8 +127,16 @@ namespace Mda.Api.Controllers
         [SwaggerOperation(Summary = "Busca usuário para mudança da Role.", Description = "Acesso só ao administrador.Retorna o usuario modificado.")]
         public async Task<ActionResult<UsuarioResponse>> Patch([FromRoute] Guid id, [FromBody] UsuarioRequestRole userRole)
         {
-            var result = await _usuarioService.Patch(id, userRole);
-            return Ok(result);
+            try
+            {
+                var result = await _usuarioService.Patch(id, userRole);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -110,9 +150,16 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(204)]
         public async Task<ActionResult> Delete([FromRoute] Guid id)
         {
+            try
+            {
+                await _usuarioService.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            await _usuarioService.Delete(id);
-            return NoContent();
         }
 
     }
