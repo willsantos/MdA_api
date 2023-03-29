@@ -51,7 +51,7 @@ namespace Mda.Api.Controllers
 
         }
         [HttpGet]
-        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [SwaggerOperation(Summary = "Busca Todos As Areas ativas.", Description = "Retorna todas as Areas Ativas.")]
         [ProducesResponseType(200)]
         public async Task<ActionResult<IEnumerable<AreaResponse>>> Get()
@@ -59,6 +59,23 @@ namespace Mda.Api.Controllers
             try
             {
                 var result = await _areaService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca AREA para mudança de dados.", Description = "Retorna Area modificada.")]
+        public async Task<ActionResult<AreaResponse>> Put([FromBody] AreaRequestInicio AreaAlteracao, [FromRoute] Guid id)
+        {
+            try
+            {
+                var result = await _areaService.Put(AreaAlteracao, id);
                 return Ok(result);
             }
             catch (Exception ex)
