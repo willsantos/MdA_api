@@ -31,8 +31,16 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(201)]
         public async Task<ActionResult<RodaResponse>> Post([FromBody] RodaRequest roda)
         {
-            var result = await _rodaService.Post(roda);
-            return Ok(result);
+            try
+            {
+                var result = await _rodaService.Post(roda);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -48,8 +56,17 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(200)]
         public async Task<ActionResult<RodaResponse>> GetById(Guid id)
         {
-            var result = await _rodaService.GetById(id);
-            return Ok(result);
+            try
+            {
+                var result = await _rodaService.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
         }
 
         /// <summary>
@@ -65,8 +82,16 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(200)]
         public async Task<ActionResult<IEnumerable<RodaResponse>>> Get()
         {
-            var result = await _rodaService.Get();
-            return Ok(result);
+            try
+            {
+                var result = await _rodaService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -82,8 +107,16 @@ namespace Mda.Api.Controllers
         [SwaggerOperation(Summary = "Busca roda para mudança de dados.", Description = "Retorna a roda modificada.")]
         public async Task<ActionResult<RodaResponse>> Put([FromBody] RodaRequest rodaAlteracao, [FromRoute] Guid id)
         {
-            var result = await _rodaService.Put(rodaAlteracao, id);
-            return Ok(result);
+            try
+            {
+                var result = await _rodaService.Put(rodaAlteracao, id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -97,8 +130,17 @@ namespace Mda.Api.Controllers
         [ProducesResponseType(204)]
         public async Task<ActionResult> Delete([FromRoute] Guid id)
         {
-            await _rodaService.Delete(id);
-            return NoContent();
+            try
+            {
+                await _rodaService.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
         }
     }
 }
