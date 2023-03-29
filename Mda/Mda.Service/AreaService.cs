@@ -29,7 +29,7 @@ namespace Mda.Service
             var AreaCadastrada = await _areaRepository.AddAsync(requestArea);
             return _mapper.Map<AreaResponse>(AreaCadastrada);
         }
-        public async Task<AreaResponse> PutFimArea(AreaRequestFim request, Guid? Id)
+        public async Task<AreaResponse> Patch(AreaRequestFim request, Guid? Id)
         {
             var areaEcontrada = await _areaRepository.FindAsync(x => x.Id == Id);
             var requestArea = _mapper.Map<Area>(request);
