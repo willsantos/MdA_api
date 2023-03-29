@@ -44,7 +44,7 @@ namespace Mda.Api.Controllers
         /// <summary>
         /// Realiza busca de Area por Id.
         /// </summary>
-        /// <returns>Usuário</returns>
+        /// <returns>Area</returns>
         /// <response code="200">Retorna Area</response>
         /// <response code="404">Se o objeto não existe</response>
         /// <response code="403">Se o acesso for negado</response>
