@@ -20,7 +20,7 @@ namespace Mda.Api.Controllers
             _rodaService = rodaService;
         }
         /// <summary>
-        /// Realiza cadastro de nova Rods.
+        /// Realiza cadastro de nova Roda.
         /// </summary>
         /// <returns>Roda cadastrada</returns>
         /// <response code="201">Retorna Roda cadastrada</response>

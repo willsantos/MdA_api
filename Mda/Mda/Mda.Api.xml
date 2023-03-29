@@ -4,6 +4,49 @@
         <name>Mda.Api</name>
     </assembly>
     <members>
+        <member name="M:Mda.Api.Controllers.RodaController.Post(Mda.Domain.UsuarioContratos.RodaRequest)">
+            <summary>
+            Realiza cadastro de nova Rods.
+            </summary>
+            <returns>Roda cadastrada</returns>
+            <response code="201">Retorna Roda cadastrada</response>
+            <response code="400">Se o item não for criado</response> 
+        </member>
+        <member name="M:Mda.Api.Controllers.RodaController.GetById(System.Guid)">
+            <summary>
+            Realiza busca de Roda por Id.
+            </summary>
+            <returns>Roda</returns>
+            <response code="200">Retorna Roda</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.RodaController.Get">
+            <summary>
+            Realiza busca de todos as Rodas.
+            </summary>
+            <returns>Rodas</returns>
+            <response code="200">Retorna Rodass</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.RodaController.Put(Mda.Domain.UsuarioContratos.RodaRequest,System.Guid)">
+             <summary>
+             Busca Roda e realiza mudança de dados.
+             </summary>   
+            <returns>Roda modificada</returns>
+             <response code="200">Se o objeto existe e foi alterado</response>
+             <response code="404">Se o objeto não existe</response>
+             <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.RodaController.Delete(System.Guid)">
+            <summary>
+            Deleta Roda logicamente.
+            </summary>            
+            <response code="200">Se o objeto existe</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
         <member name="M:Mda.Api.Controllers.UsuarioController.Post(Mda.Domain.UsuarioContratos.UsuarioRequest)">
             <summary>
             Realiza cadastro de novo usuário.
