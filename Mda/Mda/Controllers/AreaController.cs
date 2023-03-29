@@ -114,7 +114,7 @@ namespace Mda.Api.Controllers
 
         }
         /// <summary>
-        /// Busca usuário e realiza mudança de status
+        /// Busca Area e realiza mudança de status
         /// </summary>   
         ///<returns>Area modificada</returns>
         /// <response code="200">Se o objeto existe e foi alterado</response>

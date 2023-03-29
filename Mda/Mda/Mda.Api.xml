@@ -4,6 +4,58 @@
         <name>Mda.Api</name>
     </assembly>
     <members>
+        <member name="M:Mda.Api.Controllers.AreaController.Post(Mda.Domain.UsuarioContratos.AreaRequestInicio)">
+            <summary>
+            Realiza cadastro de nova Area.
+            </summary>
+            <returns>Area cadastrada</returns>
+            <response code="201">Retorna Area Cadastrada</response>
+            <response code="400">Se o item não for criado</response> 
+        </member>
+        <member name="M:Mda.Api.Controllers.AreaController.GetById(System.Guid)">
+            <summary>
+            Realiza busca de Area por Id.
+            </summary>
+            <returns>Usuário</returns>
+            <response code="200">Retorna Area</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.AreaController.Get">
+            <summary>
+            Realiza busca de todas as Areas.
+            </summary>
+            <returns>Areas</returns>
+            <response code="200">Retorna Areas</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.AreaController.Put(Mda.Domain.UsuarioContratos.AreaRequestInicio,System.Guid)">
+             <summary>
+             Busca Area e realiza mudança de dados.
+             </summary>   
+            <returns>Area modificada</returns>
+             <response code="200">Se o objeto existe e foi alterado</response>
+             <response code="404">Se o objeto não existe</response>
+             <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.AreaController.Patch(System.Guid,Mda.Domain.UsuarioContratos.AreaRequestFim)">
+             <summary>
+             Busca usuário e realiza mudança de status
+             </summary>   
+            <returns>Area modificada</returns>
+             <response code="200">Se o objeto existe e foi alterado</response>
+             <response code="404">Se o objeto não existe</response>
+             <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.AreaController.Delete(System.Guid)">
+            <summary>
+            Deleta Area.
+            </summary>            
+            <response code="200">Se o objeto existe</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
         <member name="M:Mda.Api.Controllers.RodaController.Post(Mda.Domain.UsuarioContratos.RodaRequest)">
             <summary>
             Realiza cadastro de nova Roda.
