@@ -84,5 +84,22 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [HttpPatch("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca Area para mudança de Status.", Description = "Retorna Area modificada.")]
+        public async Task<ActionResult<UsuarioResponse>> Patch([FromRoute] Guid id, [FromBody] AreaRequestFim areaFim)
+        {
+            try
+            {
+                var result = await _areaService.Patch(areaFim, id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
