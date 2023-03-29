@@ -37,5 +37,15 @@ namespace Mda.Api.Controllers
             var result = await _rodaService.GetById(id);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
+        [SwaggerOperation(Summary = "Busca todas as rodas.", Description = "Retorna todas as rodas Ativas.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<IEnumerable<RodaResponse>>> Get()
+        {
+            var result = await _rodaService.Get();
+            return Ok(result);
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace Mda.Service
 
         public async Task<IEnumerable<RodaResponse>> Get()
         {
-            var listRodas = await _rodaRepository.ListAsync(x => x.UsuarioId == UsuarioId);
+            var listRodas = await _rodaRepository.ListAsync();
             if (listRodas == null)
             {
                 throw new Exception("Você não tem Rodas Cadastradas");
