@@ -17,6 +17,8 @@ namespace Mda.Api.Controllers
         {
             _areaService = areaService;
         }
+
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma nova Area no banco.", Description = "Retorna dados da Area.")]
         [ProducesResponseType(201)]
