@@ -19,7 +19,12 @@ namespace Mda.Api.Controllers
         {
             _areaService = areaService;
         }
-
+        /// <summary>
+        /// Realiza cadastro de nova Area.
+        /// </summary>
+        /// <returns>Area cadastrada</returns>
+        /// <response code="201">Retorna Area Cadastrada</response>
+        /// <response code="400">Se o item não for criado</response> 
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma nova Area no banco.", Description = "Retorna dados da Area.")]
@@ -36,7 +41,13 @@ namespace Mda.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Realiza busca de Area por Id.
+        /// </summary>
+        /// <returns>Usuário</returns>
+        /// <response code="200">Retorna Area</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Busca Area Por id", Description = "Retorna a Area se ela for encontrada. Se não, retorna exception.")]
@@ -54,6 +65,13 @@ namespace Mda.Api.Controllers
             }
 
         }
+        /// <summary>
+        /// Realiza busca de todas as Areas.
+        /// </summary>
+        /// <returns>Areas</returns>
+        /// <response code="200">Retorna Areas</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [HttpGet]
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [SwaggerOperation(Summary = "Busca Todos As Areas ativas.", Description = "Retorna todas as Areas Ativas.")]
@@ -71,6 +89,13 @@ namespace Mda.Api.Controllers
             }
 
         }
+        /// <summary>
+        /// Busca Area e realiza mudança de dados.
+        /// </summary>   
+        ///<returns>Area modificada</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
@@ -88,6 +113,13 @@ namespace Mda.Api.Controllers
             }
 
         }
+        /// <summary>
+        /// Busca usuário e realiza mudança de status
+        /// </summary>   
+        ///<returns>Area modificada</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
         [HttpPatch("{id}")]
         [ProducesResponseType(200)]
@@ -105,6 +137,12 @@ namespace Mda.Api.Controllers
             }
 
         }
+        /// <summary>
+        /// Deleta Area.
+        /// </summary>            
+        /// <response code="200">Se o objeto existe</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
