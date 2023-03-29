@@ -16,7 +16,7 @@
             <summary>
             Realiza busca de Area por Id.
             </summary>
-            <returns>Usuário</returns>
+            <returns>Area</returns>
             <response code="200">Retorna Area</response>
             <response code="404">Se o objeto não existe</response>
             <response code="403">Se o acesso for negado</response>
@@ -41,7 +41,7 @@
         </member>
         <member name="M:Mda.Api.Controllers.AreaController.Patch(System.Guid,Mda.Domain.UsuarioContratos.AreaRequestFim)">
              <summary>
-             Busca usuário e realiza mudança de status
+             Busca Area e realiza mudança de status
              </summary>   
             <returns>Area modificada</returns>
              <response code="200">Se o objeto existe e foi alterado</response>
