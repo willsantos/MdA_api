@@ -1,8 +1,11 @@
-﻿using Mda.Domain.Interfaces;
+﻿using Mda.Domain.Entities.Utils;
+using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
 using Mda.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Data;
 
 namespace Mda.Api.Controllers
 {
@@ -22,6 +25,23 @@ namespace Mda.Api.Controllers
             try
             {
                 var result = await _areaService.Post(area);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca Area Por id", Description = "Retorna a Area se ela for encontrada. Se não, retorna exception.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<AreaResponse>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _areaService.GetById(id);
                 return Ok(result);
             }
             catch (Exception ex)
