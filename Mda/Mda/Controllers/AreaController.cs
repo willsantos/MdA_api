@@ -9,6 +9,8 @@ using System.Data;
 
 namespace Mda.Api.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class AreaController : ControllerBase
     {
         private IAreaService _areaService;
@@ -22,7 +24,7 @@ namespace Mda.Api.Controllers
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma nova Area no banco.", Description = "Retorna dados da Area.")]
         [ProducesResponseType(201)]
-        public async Task<ActionResult<UsuarioResponse>> Post([FromBody] AreaRequestInicio area)
+        public async Task<ActionResult<AreaResponse>> Post([FromBody] AreaRequestInicio area)
         {
             try
             {
