@@ -56,5 +56,13 @@ namespace Mda.Api.Controllers
             var result = await _rodaService.Put(rodaAlteracao, id);
             return Ok(result);
         }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        public async Task<ActionResult> Delete([FromRoute] Guid id)
+        {
+            await _rodaService.Delete(id);
+            return NoContent();
+        }
     }
 }
