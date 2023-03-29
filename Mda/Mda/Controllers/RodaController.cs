@@ -1,6 +1,7 @@
 ﻿using Mda.Domain.Entities.Utils;
 using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
+using Mda.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -25,6 +26,15 @@ namespace Mda.Api.Controllers
         public async Task<ActionResult<RodaResponse>> Post([FromBody] RodaRequest roda)
         {
             var result = await _rodaService.Post(roda);
+            return Ok(result);
+        }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca roda Por id", Description = "Retorna roda se ele for encontrado, e se não, retorna exception.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<RodaResponse>> GetById(Guid id)
+        {
+            var result = await _rodaService.GetById(id);
             return Ok(result);
         }
     }
