@@ -49,7 +49,7 @@ namespace Mda.Service
             var listRodas = await _rodaRepository.ListAsync();
             if (listRodas == null)
             {
-                throw new Exception("Você não tem Rodas Cadastradas");
+                throw new Exception("Não há Rodas Cadastradas");
             }
 
             return _mapper.Map<IEnumerable<RodaResponse>>(listRodas);
