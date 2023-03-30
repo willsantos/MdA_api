@@ -70,5 +70,23 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca Tarefa para mudança de dados.", Description = "Retorna Tarefa modificada.")]
+        public async Task<ActionResult<TarefaResponse>> Put([FromBody] TarefaRequest tarefaAlteracao, [FromRoute] Guid id)
+        {
+            try
+            {
+                var result = await _tarefaService.Put(tarefaAlteracao, id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
