@@ -20,6 +20,12 @@ namespace Mda.Api.Controllers
             _tarefaService = tarefaservice;
         }
 
+        /// <summary>
+        /// Realiza cadastro de nova Tarefa.
+        /// </summary>
+        /// <returns>Tarefa cadastrada</returns>
+        /// <response code="201">Retorna Tarefa Cadastrada</response>
+        /// <response code="400">Se o item não for criado</response> 
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma nova Tarefa no banco.", Description = "Retorna dados da Tarefa.")]
@@ -36,6 +42,13 @@ namespace Mda.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        /// <summary>
+        /// Realiza busca de Tarefa por Id.
+        /// </summary>
+        /// <returns>Tarefa</returns>
+        /// <response code="200">Retorna Tarefa</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Busca Tarefa Por id", Description = "Retorna a Tarefa se ela for encontrada. Se não, retorna exception.")]
@@ -53,6 +66,14 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Realiza busca de todas as Tarefas.
+        /// </summary>
+        /// <returns>Tarefass</returns>
+        /// <response code="200">Retorna Tarefass</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [HttpGet]
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [SwaggerOperation(Summary = "Busca Todos As Tarefas ativas.", Description = "Retorna todas as Tarefas Ativas.")]
@@ -70,7 +91,13 @@ namespace Mda.Api.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Busca Tarefa e realiza mudança de dados.
+        /// </summary>   
+        ///<returns>Tarefa modificada</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
@@ -88,6 +115,13 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Deleta Tarefa.
+        /// </summary>            
+        /// <response code="200">Se o objeto existe</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
