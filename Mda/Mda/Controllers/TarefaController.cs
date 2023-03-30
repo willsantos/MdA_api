@@ -53,5 +53,22 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [HttpGet]
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [SwaggerOperation(Summary = "Busca Todos As Tarefas ativas.", Description = "Retorna todas as Tarefas Ativas.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<IEnumerable<TarefaResponse>>> Get()
+        {
+            try
+            {
+                var result = await _tarefaService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
