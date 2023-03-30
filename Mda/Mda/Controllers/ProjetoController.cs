@@ -1,38 +1,41 @@
-﻿using Mda.Domain.Entities.Utils;
+﻿using Mda.Domain.Contratos;
+using Mda.Domain.Entities.Utils;
 using Mda.Domain.Interfaces;
 using Mda.Domain.UsuarioContratos;
+using Mda.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Data;
 
 namespace Mda.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ObjetivoController : ControllerBase
+    public class ProjetoController : ControllerBase
     {
-        private IObjetivoService _objetivoService;
+        private readonly IProjetoService _projetoService;
 
-        public ObjetivoController(IObjetivoService objetivoService)
+        public ProjetoController(IProjetoService projetoService)
         {
-            _objetivoService = objetivoService;
+            _projetoService = projetoService;
         }
 
         /// <summary>
-        /// Realiza cadastro de novo Objetivo.
+        /// Realiza cadastro de novo projeto.
         /// </summary>
-        /// <returns>Objetivo cadastrada</returns>
-        /// <response code="201">Retorna Objetivo Cadastrado</response>
+        /// <returns>Projeto cadastrado</returns>
+        /// <response code="201">Retorna Projeto Cadastrado</response>
         /// <response code="400">Se o item não for criado</response> 
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]
-        [SwaggerOperation(Summary = "Cadastra uma novo Objetivo no banco.", Description = "Retorna dados do Objetivo.")]
+        [SwaggerOperation(Summary = "Cadastra uma novo projeto no banco.", Description = "Retorna dados do projeto.")]
         [ProducesResponseType(201)]
-        public async Task<ActionResult<ObjetivoResponse>> Post([FromBody] ObjetivoRequest request)
+        public async Task<ActionResult<ProjetoResponse>> Post([FromBody] ProjetoRequest request)
         {
             try
             {
-                var result = await _objetivoService.Post(request);
+                var result = await _projetoService.Post(request);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -42,21 +45,21 @@ namespace Mda.Api.Controllers
         }
 
         /// <summary>
-        /// Realiza busca de objetivo por Id.
+        /// Realiza busca de projeto por Id.
         /// </summary>
-        /// <returns>Objetivo</returns>
-        /// <response code="200">Retorna Objetivo</response>
+        /// <returns>Projeto</returns>
+        /// <response code="200">Retorna projeto</response>
         /// <response code="404">Se o objeto não existe</response>
         /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpGet("{id}")]
-        [SwaggerOperation(Summary = "Busca Objetivo Por id", Description = "Retorna Objetivo se ele for encontrado. Se não, retorna exception.")]
+        [SwaggerOperation(Summary = "Busca Projetp Por id", Description = "Retorna Projeto se ele for encontrado. Se não, retorna exception.")]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<ObjetivoResponse>> GetById(Guid id)
+        public async Task<ActionResult<ProjetoResponse>> GetById(Guid id)
         {
             try
             {
-                var result = await _objetivoService.GetById(id);
+                var result = await _projetoService.GetById(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -67,21 +70,21 @@ namespace Mda.Api.Controllers
         }
 
         /// <summary>
-        /// Realiza busca de todos os Objetivos.
+        /// Realiza busca de todos os projetos.
         /// </summary>
-        /// <returns>Objetivo</returns>
-        /// <response code="200">Retorna Objetivo</response>
+        /// <returns>Projetos</returns>
+        /// <response code="200">Retorna Projetos</response>
         /// <response code="404">Se o objeto não existe</response>
         /// <response code="403">Se o acesso for negado</response>
         [HttpGet]
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
-        [SwaggerOperation(Summary = "Busca Todos Os Objetivos ativos.", Description = "Retorna todos os objetivos Ativos.")]
+        [SwaggerOperation(Summary = "Busca Todos Os Projetos ativos.", Description = "Retorna todos os projetos Ativos.")]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<IEnumerable<ObjetivoResponse>>> Get()
+        public async Task<ActionResult<IEnumerable<ProjetoResponse>>> Get()
         {
             try
             {
-                var result = await _objetivoService.Get();
+                var result = await _projetoService.Get();
                 return Ok(result);
             }
             catch (Exception ex)
@@ -92,21 +95,21 @@ namespace Mda.Api.Controllers
         }
 
         /// <summary>
-        /// Busca Objetivo e realiza mudança de dados.
+        /// Busca Projeto e realiza mudança de dados.
         /// </summary>   
-        ///<returns>Objetivo modificado</returns>
+        ///<returns>Projeto modificado</returns>
         /// <response code="200">Se o objeto existe e foi alterado</response>
         /// <response code="404">Se o objeto não existe</response>
         /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
-        [SwaggerOperation(Summary = "Busca Objetivo para mudança de dados.", Description = "Retorna Objetivo modificada.")]
-        public async Task<ActionResult<ObjetivoResponse>> Put([FromBody] ObjetivoRequest objetivoAlteracao, [FromRoute] Guid id)
+        [SwaggerOperation(Summary = "Busca projeto para mudança de dados.", Description = "Retorna Projeto modificado.")]
+        public async Task<ActionResult<ProjetoResponse>> Put([FromBody] ProjetoRequest projetoAlteracao, [FromRoute] Guid id)
         {
             try
             {
-                var result = await _objetivoService.Put(objetivoAlteracao, id);
+                var result = await _projetoService.Put(projetoAlteracao, id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -117,7 +120,7 @@ namespace Mda.Api.Controllers
         }
 
         /// <summary>
-        /// Deleta Objetivo.
+        /// Deleta Projeto.
         /// </summary>            
         /// <response code="200">Se o objeto existe</response>
         /// <response code="404">Se o objeto não existe</response>
@@ -129,7 +132,7 @@ namespace Mda.Api.Controllers
         {
             try
             {
-                await _objetivoService.Delete(id);
+                await _projetoService.Delete(id);
                 return NoContent();
             }
             catch (Exception ex)
