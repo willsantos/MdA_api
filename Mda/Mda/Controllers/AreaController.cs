@@ -107,9 +107,17 @@ namespace Mda.Api.Controllers
                 var result = await _areaService.Put(AreaAlteracao, id);
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+            catch(ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
             }
 
         }
