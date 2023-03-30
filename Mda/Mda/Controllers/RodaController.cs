@@ -89,7 +89,7 @@ namespace Mda.Api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
 
         }
@@ -112,9 +112,17 @@ namespace Mda.Api.Controllers
                 var result = await _rodaService.Put(rodaAlteracao, id);
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+            catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return Problem();
             }
 
         }

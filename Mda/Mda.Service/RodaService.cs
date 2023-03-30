@@ -57,7 +57,7 @@ namespace Mda.Service
 
         public async Task<RodaResponse> Put(RodaRequest request, Guid? id)
         {
-            var RodaEncontrada = await _rodaRepository.FindAsync(x => x.Id == id && x.UsuarioId == UsuarioId);
+            var RodaEncontrada = await _rodaRepository.FindAsync(x => x.Id == id);
             RodaEncontrada = _mapper.Map<Roda>(request);
             if (RodaEncontrada == null)
             {
@@ -66,6 +66,10 @@ namespace Mda.Service
             if (RodaEncontrada.Ativo == false)
             {
                 throw new Exception("Roda não está ativa");
+            }
+            if(RodaEncontrada.UsuarioId != UsuarioId)
+            {
+                throw new UnauthorizedAccessException("Você não tem autorização");
             }
             RodaEncontrada.DataAtualizacao = DateTime.Now;
             await _rodaRepository.EditAsync(RodaEncontrada);
