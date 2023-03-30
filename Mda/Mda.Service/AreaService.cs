@@ -32,6 +32,14 @@ namespace Mda.Service
         public async Task<AreaResponse> Patch(AreaRequestFim request, Guid? Id)
         {
             var areaEcontrada = await _areaRepository.FindAsync(x => x.Id == Id);
+            if (areaEcontrada == null)
+            {
+                throw new ArgumentException("A area referente a esse Id não existe");
+            }
+            if(areaEcontrada.Roda.UsuarioId != UsuarioId)
+            {
+                throw new UnauthorizedAccessException("Você não tem autorização");
+            }
             var requestArea = _mapper.Map<Area>(request);
             requestArea.DataAtualizacao = DateTime.Now;
             areaEcontrada = requestArea;
