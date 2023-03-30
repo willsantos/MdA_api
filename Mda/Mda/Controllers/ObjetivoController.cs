@@ -18,6 +18,12 @@ namespace Mda.Api.Controllers
             _objetivoService = objetivoService;
         }
 
+        /// <summary>
+        /// Realiza cadastro de novo Objetivo.
+        /// </summary>
+        /// <returns>Objetivo cadastrada</returns>
+        /// <response code="201">Retorna Ibjetivo Cadastrado</response>
+        /// <response code="400">Se o item não for criado</response> 
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma novo Objetivo no banco.", Description = "Retorna dados do Objetivo.")]
@@ -34,6 +40,14 @@ namespace Mda.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Realiza busca de objetivo por Id.
+        /// </summary>
+        /// <returns>Objetivo</returns>
+        /// <response code="200">Retorna Objetivo</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Busca Objetivo Por id", Description = "Retorna Objetivo se ele for encontrado. Se não, retorna exception.")]
@@ -51,6 +65,14 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Realiza busca de todos os Objetivos.
+        /// </summary>
+        /// <returns>Objetivo</returns>
+        /// <response code="200">Retorna Objetivo</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [HttpGet]
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [SwaggerOperation(Summary = "Busca Todos Os Objetivos ativos.", Description = "Retorna todos os objetivos Ativos.")]
@@ -68,6 +90,14 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Busca Objetivo e realiza mudança de dados.
+        /// </summary>   
+        ///<returns>Objetivo modificado</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
@@ -86,6 +116,12 @@ namespace Mda.Api.Controllers
 
         }
 
+        /// <summary>
+        /// Deleta Objetivo.
+        /// </summary>            
+        /// <response code="200">Se o objeto existe</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
