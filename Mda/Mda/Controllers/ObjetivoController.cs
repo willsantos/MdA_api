@@ -22,7 +22,7 @@ namespace Mda.Api.Controllers
         /// Realiza cadastro de novo Objetivo.
         /// </summary>
         /// <returns>Objetivo cadastrada</returns>
-        /// <response code="201">Retorna Ibjetivo Cadastrado</response>
+        /// <response code="201">Retorna Objetivo Cadastrado</response>
         /// <response code="400">Se o item não for criado</response> 
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]

@@ -21,6 +21,12 @@ namespace Mda.Api.Controllers
             _projetoService = projetoService;
         }
 
+        /// <summary>
+        /// Realiza cadastro de novo projeto.
+        /// </summary>
+        /// <returns>Projeto cadastrado</returns>
+        /// <response code="201">Retorna Projeto Cadastrado</response>
+        /// <response code="400">Se o item não for criado</response> 
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma novo projeto no banco.", Description = "Retorna dados do projeto.")]
@@ -38,6 +44,13 @@ namespace Mda.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Realiza busca de projeto por Id.
+        /// </summary>
+        /// <returns>Projeto</returns>
+        /// <response code="200">Retorna projeto</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Busca Projetp Por id", Description = "Retorna Projeto se ele for encontrado. Se não, retorna exception.")]
@@ -56,6 +69,13 @@ namespace Mda.Api.Controllers
 
         }
 
+        /// <summary>
+        /// Realiza busca de todos os projetos.
+        /// </summary>
+        /// <returns>Projetos</returns>
+        /// <response code="200">Retorna Projetos</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [HttpGet]
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [SwaggerOperation(Summary = "Busca Todos Os Projetos ativos.", Description = "Retorna todos os projetos Ativos.")]
@@ -73,6 +93,14 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Busca Projeto e realiza mudança de dados.
+        /// </summary>   
+        ///<returns>Projeto modificado</returns>
+        /// <response code="200">Se o objeto existe e foi alterado</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
@@ -90,6 +118,13 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Deleta Projeto.
+        /// </summary>            
+        /// <response code="200">Se o objeto existe</response>
+        /// <response code="404">Se o objeto não existe</response>
+        /// <response code="403">Se o acesso for negado</response>
         [Authorize(Roles = ConstantUtil.PerfilUsuarioAdmin)]
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
