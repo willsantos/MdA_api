@@ -101,8 +101,8 @@ namespace Mda.Api.Controllers
         [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
-        [SwaggerOperation(Summary = "Busca AREA para mudança de dados.", Description = "Retorna Area modificada.")]
-        public async Task<ActionResult<AreaResponse>> Put([FromBody] ObjetivoRequest objetivoAlteracao, [FromRoute] Guid id)
+        [SwaggerOperation(Summary = "Busca Objetivo para mudança de dados.", Description = "Retorna Objetivo modificada.")]
+        public async Task<ActionResult<ObjetivoResponse>> Put([FromBody] ObjetivoRequest objetivoAlteracao, [FromRoute] Guid id)
         {
             try
             {

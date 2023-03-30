@@ -73,5 +73,22 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca projeto para mudança de dados.", Description = "Retorna Projeto modificado.")]
+        public async Task<ActionResult<ProjetoResponse>> Put([FromBody] ProjetoRequest projetoAlteracao, [FromRoute] Guid id)
+        {
+            try
+            {
+                var result = await _projetoService.Put(projetoAlteracao, id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
