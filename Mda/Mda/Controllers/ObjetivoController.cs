@@ -51,5 +51,22 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [HttpGet]
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [SwaggerOperation(Summary = "Busca Todos Os Objetivos ativos.", Description = "Retorna todos os objetivos Ativos.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<IEnumerable<ObjetivoResponse>>> Get()
+        {
+            try
+            {
+                var result = await _objetivoService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
