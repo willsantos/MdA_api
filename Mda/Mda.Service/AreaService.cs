@@ -13,15 +13,15 @@ namespace Mda.Service
         private readonly IRodaRepository _rodaRepository;
         private readonly IAreaRepository _areaRepository;
         private readonly IMapper _mapper;
-        public AreaService(IHttpContextAccessor httpContextAccessor, 
-                           IRodaRepository rodaRepository, 
-                           IAreaRepository areaRepository, 
+        public AreaService(IHttpContextAccessor httpContextAccessor,
+                           IRodaRepository rodaRepository,
+                           IAreaRepository areaRepository,
                            IMapper mapper) : base(httpContextAccessor)
         {
             _rodaRepository = rodaRepository;
             _areaRepository = areaRepository;
             _mapper = mapper;
-   
+
         }
         public async Task<AreaResponse> Post(AreaRequestInicio request)
         {
@@ -41,20 +41,20 @@ namespace Mda.Service
         public async Task<AreaResponse> GetById(Guid id)
         {
             var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id && x.Roda.UsuarioId == UsuarioId);
-            if(AreaEncontrada == null)
+            if (AreaEncontrada == null)
             {
                 throw new ArgumentException("Você não tem área cadastrada");
             }
-            if(AreaEncontrada.Ativo == false)
+            if (AreaEncontrada.Ativo == false)
             {
                 throw new ArgumentException("A respectiva Area buscada foi deletada logicamente");
             }
-            return _mapper.Map<AreaResponse>(AreaEncontrada);            
+            return _mapper.Map<AreaResponse>(AreaEncontrada);
         }
         public async Task<IEnumerable<AreaResponse>> Get()
         {
             var listArea = await _areaRepository.ListAsync(x => x.Ativo && x.Roda.UsuarioId == UsuarioId);
-            if(listArea == null)
+            if (listArea == null)
             {
                 throw new ArgumentException("Você não tem área cadastrada");
             }
@@ -62,11 +62,14 @@ namespace Mda.Service
         }
         public async Task<AreaResponse> Put(AreaRequestInicio request, Guid? id)
         {
-            var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id && x.Roda.UsuarioId == UsuarioId);
-            
+            var AreaEncontrada = await _areaRepository.FindAsync(x => x.Id == id);
+            if (AreaEncontrada.Roda.UsuarioId == UsuarioId)
+            {
+                throw new UnauthorizedAccessException("Você não tem autorização");
+            }
             if (AreaEncontrada == null)
             {
-                throw new ArgumentException("Essa Area não está cadastrada ou você não tem acesso");
+                throw new ArgumentException("Essa Area não está cadastrada");
             }
             AreaEncontrada = _mapper.Map<Area>(request);
             AreaEncontrada.DataAtualizacao = DateTime.Now;
@@ -88,6 +91,6 @@ namespace Mda.Service
             AreaEncontrada.DataAtualizacao = DateTime.Now;
             await _areaRepository.EditAsync(AreaEncontrada);
         }
-     
+
     }
 }
