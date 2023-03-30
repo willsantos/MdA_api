@@ -24,7 +24,7 @@ namespace Mda.Api.Controllers
         [HttpPost]
         [SwaggerOperation(Summary = "Cadastra uma nova Tarefa no banco.", Description = "Retorna dados da Tarefa.")]
         [ProducesResponseType(201)]
-        public async Task<ActionResult<AreaResponse>> Post([FromBody] TarefaRequest tarefa)
+        public async Task<ActionResult<TarefaResponse>> Post([FromBody] TarefaRequest tarefa)
         {
             try
             {
@@ -35,6 +35,23 @@ namespace Mda.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca Tarefa Por id", Description = "Retorna a Tarefa se ela for encontrada. Se não, retorna exception.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<TarefaResponse>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _tarefaService.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }
