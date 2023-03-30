@@ -61,7 +61,7 @@
             Realiza cadastro de novo Objetivo.
             </summary>
             <returns>Objetivo cadastrada</returns>
-            <response code="201">Retorna Ibjetivo Cadastrado</response>
+            <response code="201">Retorna Objetivo Cadastrado</response>
             <response code="400">Se o item não for criado</response> 
         </member>
         <member name="M:Mda.Api.Controllers.ObjetivoController.GetById(System.Guid)">
@@ -94,6 +94,49 @@
         <member name="M:Mda.Api.Controllers.ObjetivoController.Delete(System.Guid)">
             <summary>
             Deleta Objetivo.
+            </summary>            
+            <response code="200">Se o objeto existe</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ProjetoController.Post(Mda.Domain.Contratos.ProjetoRequest)">
+            <summary>
+            Realiza cadastro de novo projeto.
+            </summary>
+            <returns>Projeto cadastrado</returns>
+            <response code="201">Retorna Projeto Cadastrado</response>
+            <response code="400">Se o item não for criado</response> 
+        </member>
+        <member name="M:Mda.Api.Controllers.ProjetoController.GetById(System.Guid)">
+            <summary>
+            Realiza busca de projeto por Id.
+            </summary>
+            <returns>Projeto</returns>
+            <response code="200">Retorna projeto</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ProjetoController.Get">
+            <summary>
+            Realiza busca de todos os projetos.
+            </summary>
+            <returns>Projetos</returns>
+            <response code="200">Retorna Projetos</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ProjetoController.Put(Mda.Domain.Contratos.ProjetoRequest,System.Guid)">
+             <summary>
+             Busca Projeto e realiza mudança de dados.
+             </summary>   
+            <returns>Projeto modificado</returns>
+             <response code="200">Se o objeto existe e foi alterado</response>
+             <response code="404">Se o objeto não existe</response>
+             <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ProjetoController.Delete(System.Guid)">
+            <summary>
+            Deleta Projeto.
             </summary>            
             <response code="200">Se o objeto existe</response>
             <response code="404">Se o objeto não existe</response>
