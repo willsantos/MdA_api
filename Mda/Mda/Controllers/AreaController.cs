@@ -34,7 +34,7 @@ namespace Mda.Api.Controllers
             try
             {
                 var result = await _areaService.Post(area);
-                return Ok(result);
+                return Created(nameof(Post),result);
             }
             catch (Exception ex)
             {
