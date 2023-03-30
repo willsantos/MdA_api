@@ -16,7 +16,7 @@
             <summary>
             Realiza busca de Area por Id.
             </summary>
-            <returns>Usuário</returns>
+            <returns>Area</returns>
             <response code="200">Retorna Area</response>
             <response code="404">Se o objeto não existe</response>
             <response code="403">Se o acesso for negado</response>
@@ -41,7 +41,7 @@
         </member>
         <member name="M:Mda.Api.Controllers.AreaController.Patch(System.Guid,Mda.Domain.UsuarioContratos.AreaRequestFim)">
              <summary>
-             Busca usuário e realiza mudança de status
+             Busca Area e realiza mudança de status
              </summary>   
             <returns>Area modificada</returns>
              <response code="200">Se o objeto existe e foi alterado</response>
@@ -51,6 +51,49 @@
         <member name="M:Mda.Api.Controllers.AreaController.Delete(System.Guid)">
             <summary>
             Deleta Area.
+            </summary>            
+            <response code="200">Se o objeto existe</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ObjetivoController.Post(Mda.Domain.UsuarioContratos.ObjetivoRequest)">
+            <summary>
+            Realiza cadastro de novo Objetivo.
+            </summary>
+            <returns>Objetivo cadastrada</returns>
+            <response code="201">Retorna Ibjetivo Cadastrado</response>
+            <response code="400">Se o item não for criado</response> 
+        </member>
+        <member name="M:Mda.Api.Controllers.ObjetivoController.GetById(System.Guid)">
+            <summary>
+            Realiza busca de objetivo por Id.
+            </summary>
+            <returns>Objetivo</returns>
+            <response code="200">Retorna Objetivo</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ObjetivoController.Get">
+            <summary>
+            Realiza busca de todos os Objetivos.
+            </summary>
+            <returns>Objetivo</returns>
+            <response code="200">Retorna Objetivo</response>
+            <response code="404">Se o objeto não existe</response>
+            <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ObjetivoController.Put(Mda.Domain.UsuarioContratos.ObjetivoRequest,System.Guid)">
+             <summary>
+             Busca Objetivo e realiza mudança de dados.
+             </summary>   
+            <returns>Objetivo modificado</returns>
+             <response code="200">Se o objeto existe e foi alterado</response>
+             <response code="404">Se o objeto não existe</response>
+             <response code="403">Se o acesso for negado</response>
+        </member>
+        <member name="M:Mda.Api.Controllers.ObjetivoController.Delete(System.Guid)">
+            <summary>
+            Deleta Objetivo.
             </summary>            
             <response code="200">Se o objeto existe</response>
             <response code="404">Se o objeto não existe</response>

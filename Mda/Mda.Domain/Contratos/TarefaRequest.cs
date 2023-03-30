@@ -15,5 +15,7 @@ namespace Mda.Domain.Contratos
 
         [Required(ErrorMessage = "Status da tarefa é obrigatório.")]
         public EnumStatus StatusTarefa { get; set; }
+        [Required(ErrorMessage = "Nome da tarefa é obrigatório.")]
+        public string Nome { get; set; }
     }
 }
