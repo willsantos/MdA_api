@@ -55,5 +55,23 @@ namespace Mda.Api.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [SwaggerOperation(Summary = "Busca Todos Os Projetos ativos.", Description = "Retorna todos os projetos Ativos.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<IEnumerable<ProjetoResponse>>> Get()
+        {
+            try
+            {
+                var result = await _projetoService.Get();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
