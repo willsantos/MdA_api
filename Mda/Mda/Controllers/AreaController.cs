@@ -34,7 +34,7 @@ namespace Mda.Api.Controllers
             try
             {
                 var result = await _areaService.Post(area);
-                return Ok(result);
+                return Created(nameof(Post),result);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace Mda.Api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
 
         }
@@ -85,7 +85,7 @@ namespace Mda.Api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
 
         }
@@ -107,9 +107,17 @@ namespace Mda.Api.Controllers
                 var result = await _areaService.Put(AreaAlteracao, id);
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+            catch(ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch(Exception)
+            {
+                return Problem();
             }
 
         }
@@ -131,9 +139,17 @@ namespace Mda.Api.Controllers
                 var result = await _areaService.Patch(areaFim, id);
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+            catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return Problem();
             }
 
         }
