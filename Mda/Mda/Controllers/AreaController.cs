@@ -117,7 +117,7 @@ namespace Mda.Api.Controllers
             }
             catch(Exception)
             {
-                return StatusCode(500);
+                return Problem();
             }
 
         }
