@@ -34,5 +34,22 @@ namespace Mda.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca Objetivo Por id", Description = "Retorna Objetivo se ele for encontrado. Se não, retorna exception.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<ObjetivoResponse>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _objetivoService.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
