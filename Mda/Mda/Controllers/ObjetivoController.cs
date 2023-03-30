@@ -68,5 +68,22 @@ namespace Mda.Api.Controllers
             }
 
         }
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation(Summary = "Busca AREA para mudança de dados.", Description = "Retorna Area modificada.")]
+        public async Task<ActionResult<AreaResponse>> Put([FromBody] ObjetivoRequest objetivoAlteracao, [FromRoute] Guid id)
+        {
+            try
+            {
+                var result = await _objetivoService.Put(objetivoAlteracao, id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
