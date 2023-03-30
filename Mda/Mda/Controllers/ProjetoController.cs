@@ -38,5 +38,22 @@ namespace Mda.Api.Controllers
             }
         }
 
+        [Authorize(Roles = ConstantUtil.PerfilLogadoNome)]
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Busca Projetp Por id", Description = "Retorna Projeto se ele for encontrado. Se não, retorna exception.")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<ProjetoResponse>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _projetoService.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }
