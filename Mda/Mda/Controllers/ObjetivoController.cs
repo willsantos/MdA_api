@@ -33,7 +33,7 @@ namespace Mda.Api.Controllers
             try
             {
                 var result = await _objetivoService.Post(request);
-                return Ok(result);
+                return Created(nameof(Post), result);
             }
             catch (Exception ex)
             {
